@@ -11,12 +11,33 @@
   - [获取角色信息](#genshin-characters)
   - [获取深境螺旋信息](#genshin-spiral-abyss)
   - [获取祈愿记录](#genshin-wish)
-- [崩坏：星穹铁道](#崩坏星穹铁道)
+- [崩坏：星穹铁道](#崩坏-星穹铁道)
   - [获取首页信息](#star-rail-home)
   - [获取角色信息](#star-rail-characters)
   - [获取忘却之庭信息](#star-rail-forgotten-hall)
   - [获取跃迁记录](#star-rail-warp)
   - [获取开拓月历](#star-rail-month-info)
+- [绝区零](#绝区零)
+  - [获取绑定游戏账号的基本信息](#zzz-roles)
+  - [获取首页信息](#zzz-home)
+  - [获取实时便笺信息](#zzz-dailynote)
+  - [获取角色基础列表](#zzz-avatar-basic)
+  - [获取角色详情](#zzz-avatar-info)
+  - [获取式舆防卫战信息](#zzz-shiyu)
+  - [获取危局强袭战信息](#zzz-deadly-assault)
+  - [获取危局强袭战摘要](#zzz-deadly-assault-abstract)
+  - [获取临界推演摘要](#zzz-threshold-abstract)
+  - [获取临界推演详情](#zzz-threshold-detail)
+  - [获取临界推演周期详情](#zzz-threshold-period)
+  - [获取绳网月报](#zzz-month-info)
+  - [获取绳网月报详情](#zzz-month-detail)
+  - [获取调频记录](#zzz-gacha-record)
+  - [获取当前调频信息](#zzz-cur-gacha)
+  - [获取调频日历](#zzz-gacha-calendar)
+  - [获取活动日历](#zzz-activity-calendar)
+  - [获取拟境湮灭详情](#zzz-holo-boss)
+  - [获取零号空洞摘要](#zzz-abyss-abstract)
+  - [养成指南相关接口](#zzz-cultivate)
 
 ---
 
@@ -389,19 +410,13 @@ _请求方式：GET_
 
 ## 原神
 
+> **鉴权（当前）**：本节接口 **不再需要** `DS` 请求头与 salt / DS 签名算法，只需携带有效 Cookie（国服多为 `ltoken` / `ltoken_v2` 等）。
+
 <h3 id="genshin-home">获取首页信息</h3>
 
 **国服：**
 
 _请求方式：GET_
-
-> _需要验证请求头_
->
-> `x-rpc-client_type`：`5`
->
-> 4X`salt`
->
-> `DS2`
 
 > _需要验证Cookie_
 > 
@@ -613,14 +628,6 @@ _请求方式：GET_
 
 _请求方式：GET_
 
-> _需要验证请求头_
->
-> `x-rpc-client_type`：`5`
->
-> 4X`salt`
->
-> `DS2`
-
 > _需要验证Cookie_
 > 
 > LToken
@@ -639,14 +646,6 @@ _请求方式：GET_
 **国服：**
 
 _请求方式：GET_
-
-> _需要验证请求头_
->
-> `x-rpc-client_type`：`5`
->
-> 4X`salt`
->
-> `DS2`
 
 > _需要验证Cookie_
 > 
@@ -705,14 +704,6 @@ _请求方式：GET_
 **国服：**
 
 _请求方式：GET_
-
-> _需要验证请求头_
-> 
-> `x-rpc-client_type`：`5`
-> 
-> 4X`salt`
-> 
-> `DS2`
 
 > _需要验证Cookie_
 > 
@@ -972,14 +963,6 @@ _请求方式：GET_
 
 _请求方式：POST_
 
-> _需要验证请求头_
->
-> `x-rpc-client_type`：`5`
->
-> 4X`salt`
->
-> `DS2`
-
 > _需要验证Cookie_
 > 
 > LToken
@@ -1186,14 +1169,6 @@ _请求方式：POST_
 
 _请求方式：POST_
 
-> _需要验证请求头_
->
-> `x-rpc-client_type`：`5`
->
-> 4X`salt`
->
-> `DS2`
-
 > _需要验证Cookie_
 > 
 > LToken
@@ -1209,14 +1184,6 @@ _请求方式：POST_
 **国服：**
 
 _请求方式：GET_
-
-> _需要验证请求头_
->
-> `x-rpc-client_type`：`5`
->
-> 4X`salt`
->
-> `DS2`
 
 > _需要验证Cookie_
 > 
@@ -2512,14 +2479,6 @@ _请求方式：GET_
 
 _请求方式：GET_
 
-> _需要验证请求头_
->
-> `x-rpc-client_type`：`5`
->
-> 4X`salt`
->
-> `DS2`
-
 > _需要验证Cookie_
 > 
 > LToken
@@ -2625,21 +2584,15 @@ _请求方式：GET_
 
 `未知`
 
-# 崩坏：星穹铁道
+## 崩坏：星穹铁道
+
+> **鉴权（当前）**：本节接口 **不再需要** `DS` 请求头与 salt / DS 签名算法，只需携带有效 Cookie（国服多为 `ltoken` / `ltoken_v2` 等）。
 
 <h3 id="star-rail-home">获取首页信息</h3>
 
 **国服：**
 
 _请求方式：GET_
-
-> _需要验证请求头_
->
-> `x-rpc-client_type`：`5`
->
-> 4X`salt`
->
-> `DS2`
 
 > _需要验证Cookie_
 > 
@@ -3009,6 +2962,3253 @@ _请求方式：GET_
             "mi18n_key": "2"
         }
     }
+}
+```
+
+</details>
+
+## 绝区零
+
+**通用说明：**
+
+1. **鉴权（当前）**：绝区零相关接口 **不再需要** `DS` 请求头，也 **不需要** salt / DS 签名算法。只需携带有效 Cookie（国服多为 `ltoken` / `ltoken_v2` + `ltuid` / `ltuid_v2` 等）。米游社 WebView 实际请求还会带 `x-rpc-app_version`、`x-rpc-device_id`、`x-rpc-device_fp`、`x-rpc-platform`、`Origin`/`Referer`（`https://act.mihoyo.com`）等字段，**均与 DS 无关**。
+2. 大量接口返回的时间字段为对象（而非 Unix 时间戳），结构定义如下（「时间对象」）：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| year | num | 年 | |
+| month | num | 月 | |
+| day | num | 日 | |
+| hour | num | 时 | |
+| minute | num | 分 | |
+| second | num | 秒 | |
+
+3. 百分比排名类字段（如 `rank_percent`）以 **0.01%** 为单位，例如 `697` 表示约前 6.97%。
+4. 角色稀有度 `rarity` 多为字符串 `S` / `A` / `B` 等。
+5. 绝区零调频类型在战绩接口中常使用字符串枚举。
+
+---
+
+<h3 id="zzz-roles">获取绑定游戏账号的基本信息</h3>
+
+通过 LToken 拉取绑定角色时，将 `game_biz` 设为绝区零即可。返回结构与通用接口相同，见上文 [通过LToken获取绑定游戏账号的基本信息](#通过ltoken获取绑定游戏账号的基本信息)。
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> LToken
+
+`https://api-takumi.mihoyo.com/binding/api/getUserGameRolesByCookie?game_biz=nap_cn`
+
+**国际服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> CookieToken 等
+
+`https://api-account-os.hoyolab.com/binding/api/getUserGameRolesByCookieToken?game_biz=nap_global`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| game_biz | str | 游戏标识符 | 国服 `nap_cn`；国际服 `nap_global` |
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "list": [
+      {
+        "game_biz": "nap_cn",
+        "region": "prod_gf_cn",
+        "game_uid": "100000001",
+        "nickname": "示例昵称",
+        "level": 60,
+        "is_chosen": false,
+        "region_name": "新艾利都",
+        "is_official": true,
+        "is_banned": false,
+        "unmask": []
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+---
+
+<h3 id="zzz-home">获取首页信息</h3>
+
+对应米游社 / 战绩页「绝区零」首页：活跃天数、获得代理人/邦布、绳网声望、式舆/危局/临界推演等挑战数据、区域收集、「布连邦」等。
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> LToken
+
+`https://api-takumi-record.mihoyo.com/event/game_record_zzz/api/zzz/index`
+
+**国际服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> LToken
+
+`https://sg-public-api.hoyolab.com/event/game_record_zzz/api/zzz/index`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| role_id | num | 绝区零 UID | |
+| server | str | 服务器名称 | 如 `prod_gf_cn` |
+
+**JSON返回：**
+
+根对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码 | |
+| message | str | 返回消息 | |
+| data | obj | 玩家首页信息 | |
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| stats | obj | 首页统计与各玩法数据 | |
+| avatar_list | arr | 「我的代理人」展示列表 | |
+| cur_head_icon_url | str | 当前头像 URL | |
+| buddy_list | arr | 邦布列表 | |
+| cat_notes_list | arr | 待调查 | 常为空数组 |
+| award_state | str | 待调查 | |
+| game_data_show | obj | 个人展示（称号、**勋章一览**、名片等） | |
+| area_collections | arr | **区域收集**进度 | 城区 / 管制区 / 空洞等 |
+| challenge_schedule_list | arr | 挑战期次时间表 | |
+
+`data`对象→`stats`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| active_days | num | **活跃天数** | 首页主统计 |
+| avatar_num | num | **获得代理人数** | |
+| world_level_name | str | **绳网声望** | 如「传奇绳匠」 |
+| cur_period_zone_layer_count | num | 当期式舆层数（旧字段） | 可为 0；新数据见 `hadal_brief` |
+| buddy_num | num | **获得邦布数** | |
+| commemorative_coins_list | arr | 调查协会纪念币等 | 如「调查协会纪念币」「协会纪念币·海港」 |
+| achievement_count | num | **达成成就数** | |
+| climbing_tower_layer | num | **拟真鏖战试炼**层数 | 首页「拟真鏖战试炼」 |
+| next_hundred_layer | str | 下一目标层描述 | |
+| memory_battlefield | obj | **危局强袭战** | 首页展示总分等 |
+| stable_zone_layer_count | num | 稳定区层数 | |
+| all_change_zone_layer_count | num | 变动区层数 | |
+| climbing_tower_s2 | obj | 拟真鏖战试炼 S2 / 无边末路等 | 勋章类型 `MedalTypeClimbingTowerS2` |
+| temple_data | obj | **百通宝**经营汇总 | 与便笺 `temple_running` 对应 |
+| climbing_tower_s3 | obj | 拟真鏖战试炼 S3 / 荣耀所眷等 | |
+| void_front_brief | obj | **临界推演** | 首页展示总分；结局名见 `ending_record_name` |
+| challenge_full_s_times | num | 挑战满 S 次数 | |
+| memory_battlefield_full_stars_times | num | 危局满星次数 | 与勋章「危局强袭·崩解」等相关 |
+| hadal_brief | obj | **式舆防卫战** | 首页展示分数 |
+| climbing_tower_s4 | obj | **运算中枢修复计划** | 见下表子字段 |
+| rab_brief | obj | 其它玩法简报 | 待调查 |
+| bangboo_micro_web_brief | obj | **「布连邦」账号** | 见下表子字段 |
+| holo_boss_brief | obj | **拟境湮灭**简报 | 勋章「拟境湮灭·游刃」「湮灭·…」；接口字段名 `holo_boss_*` |
+| zenkov_brief | obj | 待调查 | |
+
+`data`对象→`stats`对象→`commemorative_coins_list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| num | num | 数量 | |
+| name | str | 名称 | |
+| sort | num | 排序 | |
+| url | str | 图标 | |
+| wiki_url | str | 百科链接 | 可为空 |
+
+`data`对象→`stats`对象→`memory_battlefield`对象（危局强袭战）：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| rank_percent | num | 全服排名百分比 | 0.01% 单位 |
+| total_score | num | 总分 | 首页「危局强袭战」主数字 |
+| total_star | num | 总星数 | 勋章「危局强袭·破阵」等 |
+| zone_id | num | 期次 / 区域 ID | |
+| has_hard | bool | 是否含绝境挑战 | |
+| hard_rank_percent | num | 绝境排名百分比 | |
+| hard_total_score | num | 绝境总分 | 勋章「危局强袭·肃清」等 |
+| hard_total_star | num | 绝境总星 | |
+
+`data`对象→`stats`对象→`void_front_brief`对象（临界推演）：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| void_front_id | num | 临界推演期次 ID | 拉详情时使用 |
+| has_ending_record | bool | 是否完成结局 | |
+| ending_record_name | str | 结局名称 | 如「结局一·侦探不止一个！」；勋章同名 |
+| total_score | num | 总分 | 首页「临界推演」主数字 |
+| rank_percent | num | 排名百分比 | |
+
+`data`对象→`stats`对象→`hadal_brief`对象（式舆防卫战）：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| hadal_ver | str | 式舆数据版本 | 如 `v2` |
+| hadal_brief_v2 | obj | v2 简报 | |
+
+`data`对象→`stats`对象→`hadal_brief`对象→`hadal_brief_v2`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| cur_period_zone_layer_count | num | 当期通关层数 | |
+| score | num | 分数 | 首页「式舆防卫战」主数字 |
+| rank_percent | num | 排名百分比 | 0.01% 单位 |
+| rating | str | 评级 | 如 `S+` |
+| max_score | num | 满分 | |
+
+`data`对象→`stats`对象→`climbing_tower_s4`对象（运算中枢修复计划）：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| layer_info | obj | 层数与高压测试分数 | |
+| mvp_info | obj | 高压测试排行相关 | |
+
+`layer_info`：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| climbing_tower_layer | num | **数域特训层数** | |
+| total_score | num | **高压测试最高总分** | 勋章「狂澜勋冠」引用 |
+| icon | str | 图标 | |
+
+`mvp_info`：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| floor_mvp_num | num | MVP 次数 | |
+| rank_percent | num | **高压测试排行** | 0.01% 单位；未上榜时数值偏大 |
+| display_rank | bool | 是否展示排名 | |
+
+`data`对象→`stats`对象→`bangboo_micro_web_brief`对象（「布连邦」账号）：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| level | num | **「布连邦」账号等级** | 首页主数字 |
+| treasure_info | obj | **像素童话**进度 | `cur_progress` / `max_progress` |
+| island_file | obj | **特区档案**进度 | 如 `10/33` |
+| hot_event | obj | **邦圈热点**进度 | 如 `7/35` |
+
+`data`对象→`stats`对象→`temple_data`对象（百通宝）：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| level | num | 百通宝等级 | 与便笺 `temple_running.level` 一致 |
+| sell_days | num | 经营天数相关 | |
+| total_sell_temple_coin | str | 累计经营货币 | 字符串数字 |
+
+`data`对象→`stats`对象→`holo_boss_brief`对象（拟境湮灭）：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| unlock | bool | 是否解锁 | |
+| no_injured_boss_num | num | 无伤通关 BOSS 数 | 勋章「湮灭·…」相关 |
+
+`data`对象→`avatar_list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| id | num | 代理人 ID | |
+| level | num | 等级 | |
+| name_mi18n | str | 名称 | |
+| full_name_mi18n | str | 全名 | |
+| element_type | num | 属性类型 | 数值枚举 |
+| camp_name_mi18n | str | 阵营名称 | |
+| avatar_profession | num | 职业 | 数值枚举 |
+| rarity | str | 稀有度 | `S` / `A` 等 |
+| group_icon_path | str | 阵营图标 | |
+| hollow_icon_path | str | 头像（空洞风格） | |
+| rank | num | 影画数量 | 代理人详情「影画」 |
+| is_chosen | bool | 是否展示收藏 | |
+| role_square_url | str | 方形头像 | |
+| sub_element_type | num | 副属性类型 | |
+| awaken_state | str | 觉醒状态 | 如 `AwakenStateNotVisible` |
+
+`data`对象→`buddy_list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| id | num | 邦布 ID | |
+| name | str | 名称 | |
+| rarity | str | 稀有度 | |
+| level | num | 等级 | |
+| star | num | 星级 | |
+| bangboo_rectangle_url | str | 矩形图标 | |
+
+`data`对象→`game_data_show`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| personal_title | str | 个人称号 | |
+| title_main_color | str | 称号主色 | |
+| title_bottom_color | str | 称号底色 | |
+| title_bg_url | str | 称号背景 | |
+| medal_list | arr | 勋章图标 URL 列表 | 字符串数组 |
+| card_url | str | 名片 URL | |
+| medal_item_list | arr | 待调查 | |
+| all_medal_list | arr | 全部勋章详情 | |
+| title_id | num | 称号 ID | |
+| title_material | str | 称号素材 | |
+
+`data`对象→`game_data_show`对象→`all_medal_list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| medal_icon | str | 图标 | |
+| number | num | 数值 | |
+| medal_type | str | 类型 | |
+| name | str | 名称 | |
+| is_show | bool | 是否展示 | |
+| medal_id | num | ID | |
+| no_injured | bool | 是否无伤相关 | |
+| number_str | str | 数值字符串 | |
+| is_show_percent | bool | 是否以百分比展示 | |
+
+`data`对象→`area_collections`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| urban_area_id | num | 城区 ID | |
+| urban_area_group_id | num | 城区组 ID | |
+| is_lock | bool | 是否锁定 | |
+| name | str | 名称 | |
+| icon | str | 图标 | |
+| collection_progress | num | 收集进度 | |
+
+`data`对象→`challenge_schedule_list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| challenge_type | str | 挑战类型 | 字符串枚举 |
+| start_ts | str | 开始时间戳 | 字符串形式的 Unix 秒 |
+| end_ts | str | 结束时间戳 | 字符串形式的 Unix 秒 |
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "stats": {
+      "active_days": 489,
+      "avatar_num": 46,
+      "world_level_name": "传奇绳匠",
+      "buddy_num": 30,
+      "achievement_count": 341,
+      "memory_battlefield": {
+        "rank_percent": 697,
+        "total_score": 144946,
+        "total_star": 9,
+        "zone_id": 690421,
+        "has_hard": true,
+        "hard_rank_percent": 1898,
+        "hard_total_score": 31361,
+        "hard_total_star": 3
+      },
+      "void_front_brief": {
+        "void_front_id": 201,
+        "has_ending_record": true,
+        "ending_record_name": "结局一·侦探不止一个！",
+        "total_score": 235828,
+        "rank_percent": 4356
+      },
+      "hadal_brief": {
+        "hadal_ver": "v2",
+        "hadal_brief_v2": {
+          "cur_period_zone_layer_count": 5,
+          "score": 113656,
+          "rank_percent": 2394,
+          "rating": "S+",
+          "max_score": 150000
+        }
+      },
+      "holo_boss_brief": {
+        "unlock": true,
+        "no_injured_boss_num": 0
+      }
+    },
+    "avatar_list": [
+      {
+        "id": 1581,
+        "level": 60,
+        "name_mi18n": "蕾米埃尔",
+        "full_name_mi18n": "蕾米埃尔·丹",
+        "element_type": 300,
+        "camp_name_mi18n": "达识结社",
+        "avatar_profession": 3,
+        "rarity": "S",
+        "rank": 2,
+        "is_chosen": false,
+        "role_square_url": "https://act-webstatic.mihoyo.com/game_record/zzzv2/role_square_avatar/role_square_avatar_1581.png",
+        "sub_element_type": 0,
+        "awaken_state": "AwakenStateNotVisible"
+      }
+    ],
+    "cur_head_icon_url": "https://...",
+    "buddy_list": [],
+    "cat_notes_list": [],
+    "award_state": "",
+    "game_data_show": {
+      "personal_title": "",
+      "medal_list": [],
+      "all_medal_list": []
+    },
+    "area_collections": [],
+    "challenge_schedule_list": []
+  }
+}
+```
+
+</details>
+
+---
+
+<h3 id="zzz-dailynote">获取实时便笺信息</h3>
+
+对应战绩页「实时便笺」：电量、今日活跃度、饼铺盲盒/刮刮卡/占卜、录像店经营、悬赏委托、丽都周纪、绳网会员、百通宝等。
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> LToken
+
+`https://api-takumi-record.mihoyo.com/event/game_record_zzz/api/zzz/note`
+
+**国际服：**
+
+_请求方式：GET_
+
+`https://sg-public-api.hoyolab.com/event/game_record_zzz/api/zzz/note`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| role_id | num | 绝区零 UID | |
+| server | str | 服务器名称 | |
+
+**JSON返回：**
+
+根对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码 | |
+| message | str | 返回消息 | |
+| data | obj | 实时便笺 | |
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| energy | obj | **电量** | 便笺顶部 `current/max`，如 `55/240` |
+| vitality | obj | **今日活跃度** | 日任务分组 |
+| vhs_sale | obj | **录像店经营** | 状态文案见枚举 |
+| card_sign | str | **饼铺盲盒 / 刮刮卡 / 占卜** | 日任务一项；见枚举 |
+| bounty_commission | obj | **悬赏委托进度** | 与零号空洞委托同源展示；可为 null |
+| survey_points | null/obj | 待调查 | 可为 null |
+| abyss_refresh | num | 周期玩法刷新剩余秒数 | 便笺「X 天 X 小时后刷新」类倒计时 |
+| coffee | null/obj | 待调查 | 可为 null |
+| weekly_task | obj | **丽都周纪获取积分** | |
+| member_card | obj | **绳网会员** | |
+| is_sub | bool | 是否订阅相关 | |
+| is_other_sub | bool | 是否他人订阅视角 | |
+| temple_running | obj | **百通宝** | 含「自动托管」等 |
+| cafe_state | str | **菲林已领取**状态 | 如 `CafeStateDone` 对应便笺「菲林已领取 / 已完成」 |
+
+`data`对象→`energy`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| progress | obj | 当前 / 上限 | 便笺「电量」 |
+| restore | num | 回满所需秒数 | |
+| day_type | num | 回满落在哪一天 | `1` 今日；`2` 明日（文案「明日 HH:MM 回满」） |
+| hour | num | 回满时刻（时） | |
+| minute | num | 回满时刻（分） | |
+
+`data`对象→`energy`对象→`progress`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| max | num | 电量上限 | 如 240 |
+| current | num | 当前电量 | |
+
+`data`对象→`vitality`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| max | num | 今日活跃度上限 | 如 400 |
+| current | num | 当前今日活跃度 | |
+
+`data`对象→`vhs_sale`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| sale_state | str | 录像店经营状态 | 见枚举 |
+
+> `vhs_sale.sale_state` 与便笺文案对照：
+>
+> * `SaleStateNo`：等待营业
+> * `SaleStateDoing`：**正在营业**
+> * `SaleStateDone`：**待结算**
+
+> `card_sign` 枚举：
+>
+> * `CardSignNo`：未完成
+> * `CardSignDone`：已完成
+
+`data`对象→`bounty_commission`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| num | num | 悬赏委托当前进度 | |
+| total | num | 目标总量 | 如 8000 |
+| refresh_time | num | 刷新剩余秒数 | 文案「X 天 X 小时后刷新」 |
+| unlock | bool | 是否解锁 | |
+| hide | bool | 是否隐藏 | |
+
+`data`对象→`weekly_task`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| refresh_time | num | 刷新剩余秒数 | |
+| cur_point | num | 丽都周纪当前积分 | |
+| max_point | num | 积分上限 | |
+| unlock | bool | 是否解锁 | |
+
+`data`对象→`member_card`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| is_open | bool | 是否开通绳网会员 | |
+| member_card_state | str | 状态 | 如 `MemberCardStateACK` |
+| exp_time | str | 剩余可领取天数对应的秒数（字符串） | 便笺「剩余领取 N 天」 |
+
+`data`对象→`temple_running`对象（百通宝）：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| expedition_state | str | 派遣状态 | |
+| bench_state | str | 工位状态 | |
+| shelve_state | str | 货架状态 | |
+| level | num | 百通宝等级 | |
+| weekly_currency_max | str | 周货币上限 | 字符串数字 |
+| currency_next_refresh_ts | str | 下次刷新时间戳 | |
+| current_currency | str | 当前货币 | |
+| auto_work | obj | **自动托管** | |
+
+`data`对象→`temple_running`对象→`auto_work`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| is_auto_work_running | bool | 自动托管是否运行中 | |
+| auto_work_ended | bool | 自动托管是否已完成 | 便笺「已完成」 |
+| left_ts | num | 剩余秒数 | |
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "energy": {
+      "progress": { "max": 240, "current": 55 },
+      "restore": 66538,
+      "day_type": 2,
+      "hour": 15,
+      "minute": 10
+    },
+    "vitality": { "max": 400, "current": 400 },
+    "vhs_sale": { "sale_state": "SaleStateDoing" },
+    "card_sign": "CardSignDone",
+    "bounty_commission": {
+      "num": 0,
+      "total": 8000,
+      "refresh_time": 544731,
+      "unlock": true,
+      "hide": false
+    },
+    "survey_points": null,
+    "abyss_refresh": 544731,
+    "coffee": null,
+    "weekly_task": {
+      "refresh_time": 544731,
+      "cur_point": 100,
+      "max_point": 2100,
+      "unlock": true
+    },
+    "member_card": {
+      "is_open": true,
+      "member_card_state": "MemberCardStateACK",
+      "exp_time": "16355930"
+    },
+    "is_sub": false,
+    "is_other_sub": false,
+    "temple_running": {
+      "expedition_state": "ExpeditionStateUnknown",
+      "bench_state": "BenchStateUnknown",
+      "shelve_state": "ShelveStateUnknown",
+      "level": 45,
+      "weekly_currency_max": "5000",
+      "currency_next_refresh_ts": "0",
+      "current_currency": "0",
+      "auto_work": {
+        "is_auto_work_running": true,
+        "auto_work_ended": true,
+        "left_ts": 0
+      }
+    },
+    "cafe_state": "CafeStateDone"
+  }
+}
+```
+
+</details>
+
+---
+
+<h3 id="zzz-avatar-basic">获取角色基础列表</h3>
+
+返回账号拥有的代理人简要信息（不含驱动盘 / 音擎详情）。
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> LToken
+
+`https://api-takumi-record.mihoyo.com/event/game_record_zzz/api/zzz/avatar/basic`
+
+**国际服：**
+
+`https://sg-public-api.hoyolab.com/event/game_record_zzz/api/zzz/avatar/basic`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| role_id | num | 绝区零 UID | |
+| server | str | 服务器名称 | |
+
+**JSON返回：**
+
+根对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码 | |
+| message | str | 返回消息 | |
+| data | obj | 角色列表 | |
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| avatar_list | arr | 代理人基础信息 | 字段同首页 `avatar_list` 单项 |
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "avatar_list": [
+      {
+        "id": 1581,
+        "level": 60,
+        "name_mi18n": "蕾米埃尔",
+        "full_name_mi18n": "蕾米埃尔·丹",
+        "element_type": 300,
+        "camp_name_mi18n": "达识结社",
+        "avatar_profession": 3,
+        "rarity": "S",
+        "group_icon_path": "https://...",
+        "hollow_icon_path": "https://...",
+        "rank": 2,
+        "is_chosen": false,
+        "role_square_url": "https://act-webstatic.mihoyo.com/game_record/zzzv2/role_square_avatar/role_square_avatar_1581.png",
+        "sub_element_type": 0,
+        "awaken_state": "AwakenStateNotVisible"
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+---
+
+<h3 id="zzz-avatar-info">获取角色详情</h3>
+
+按代理人 ID 查询驱动盘、音擎、技能、影画、皮肤与属性面板等。
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> LToken
+
+`https://api-takumi-record.mihoyo.com/event/game_record_zzz/api/zzz/avatar/info`
+
+**国际服：**
+
+`https://sg-public-api.hoyolab.com/event/game_record_zzz/api/zzz/avatar/info`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| role_id | num | 绝区零 UID | |
+| server | str | 服务器名称 | |
+| id_list[] | num | 代理人 ID | 可重复传递多个；URL 形如 `id_list[]=1581` |
+| need_wiki | bool | 是否返回 wiki 字典 | 如 `true` |
+
+**JSON返回：**
+
+根对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码 | |
+| message | str | 返回消息 | |
+| data | obj | 角色详情 | |
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| avatar_list | arr | 代理人详情列表 | |
+| equip_wiki | obj | 驱动盘 wiki 链接字典 | key 为装备 ID 字符串 |
+| weapon_wiki | obj | 音擎 wiki 链接字典 | |
+| avatar_wiki | obj | 代理人 wiki 链接字典 | |
+| strategy_wiki | obj | 攻略 wiki | |
+| cultivate_index | obj/任意 | 养成相关 | 待调查 |
+| cultivate_equip | obj/任意 | 养成相关 | 待调查 |
+| special_skill_icon | obj/任意 | 特殊技能图标 | |
+
+`data`对象→`avatar_list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| id | num | 代理人 ID | |
+| level | num | 等级 | |
+| name_mi18n | str | 名称 | |
+| full_name_mi18n | str | 全名 | |
+| element_type | num | 属性 | |
+| camp_name_mi18n | str | 阵营 | |
+| avatar_profession | num | 职业 | |
+| rarity | str | 稀有度 | |
+| group_icon_path | str | 阵营图标 | |
+| hollow_icon_path | str | 头像 | |
+| equip | arr | **驱动盘**列表 | 详情页「驱动盘」 |
+| weapon | obj | **音擎** | 如「空羽复归之诗」 |
+| properties | arr | **代理人属性** / 基础属性 | `property_name` 为中文属性名 |
+| skills | arr | **技能** | |
+| rank | num | 已解锁影画数 | |
+| ranks | arr | 影画详情 | |
+| role_vertical_painting_url | str | 立绘 | |
+| equip_plan_info | obj | 驱动盘方案 / 评分 | 详情页「切换方案」；含有效副属性命中 |
+| us_full_name | str | 英文全名等 | |
+| vertical_painting_color | str | 立绘主色 | |
+| sub_element_type | num | 副属性 | |
+| skin_list | arr | 皮肤 | |
+| role_square_url | str | 方形头像 | |
+| awaken_state | str | 觉醒状态 | |
+| skill_awaken | obj | 技能觉醒 | |
+
+`data`对象→`avatar_list`数组→对象→`equip`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| id | num | 驱动盘 ID | |
+| level | num | 等级 | |
+| name | str | 名称 | |
+| icon | str | 图标 | |
+| rarity | str | 稀有度 | |
+| properties | arr | 副词条 | |
+| main_properties | arr | 主词条 | |
+| equip_suit | obj | 套装信息 | |
+| equipment_type | num | 部位 | |
+| invalid_property_cnt | num | 未命中方案的副属性次数 | 详情文案「未命中 N 次」 |
+| all_hit | bool | 是否全部命中方案 | |
+
+`data`对象→`avatar_list`数组→对象→`equip`数组→对象→`properties`/`main_properties`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| property_name | str | 属性名 | |
+| property_id | num | 属性 ID | |
+| base | str | 数值 | 字符串 |
+| level | num | 强化等级 | |
+| valid | bool | 是否有效 | |
+| system_id | num | 系统 ID | |
+| add | num | 附加 | |
+
+`data`对象→`avatar_list`数组→对象→`equip`数组→对象→`equip_suit`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| suit_id | num | 套装 ID | |
+| name | str | 套装名 | |
+| own | num | 已装备件数 | |
+| desc1 | str | 2 件效果 | |
+| desc2 | str | 4 件效果 | |
+
+`data`对象→`avatar_list`数组→对象→`weapon`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| id | num | 音擎 ID | |
+| level | num | 等级 | |
+| name | str | 名称 | |
+| star | num | 精炼 / 星级 | |
+| icon | str | 图标 | |
+| rarity | str | 稀有度 | |
+| properties | arr | 属性 | 结构同驱动盘词条 |
+| main_properties | arr | 主属性 | |
+| talent_title | str | 天赋标题 | |
+| talent_content | str | 天赋描述 | |
+| profession | num | 职业限制 | |
+
+`data`对象→`avatar_list`数组→对象→`properties`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| property_name | str | 属性名 | 如：生命值、攻击力、防御力、冲击力、暴击率、暴击伤害、异常掌控、异常精通、穿透率、能量自动回复 |
+| property_id | num | 属性 ID | 如 `1`–`11` |
+| base | str | 基础值 | |
+| add | str | 加成值 | |
+| final | str | 最终值 | 详情页展示 |
+
+`data`对象→`avatar_list`数组→对象→`skills`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| level | num | 技能等级 | |
+| skill_type | num | 技能类型 | |
+| items | arr | 描述条目 | |
+| awaken_state | str | 觉醒状态 | |
+
+`data`对象→`avatar_list`数组→对象→`ranks`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| id | num | 影画 ID | |
+| name | str | 名称 | |
+| desc | str | 描述 | |
+| pos | num | 位置 | |
+| is_unlocked | bool | 是否解锁 | |
+
+`data`对象→`avatar_list`数组→对象→`skin_list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| skin_id | num | 皮肤 ID | |
+| skin_name | str | 名称 | |
+| skin_vertical_painting_url | str | 立绘 | |
+| skin_square_url | str | 方图 | |
+| skin_hollow_icon_path | str | 图标 | |
+| skin_vertical_painting_color | str | 主色 | |
+| unlocked | bool | 是否解锁 | |
+| rarity | str | 稀有度 | |
+| is_original | bool | 是否原皮 | |
+
+---
+
+<details>
+<summary>查看示例（节选）</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "avatar_list": [
+      {
+        "id": 1581,
+        "level": 60,
+        "name_mi18n": "蕾米埃尔",
+        "full_name_mi18n": "蕾米埃尔·丹",
+        "element_type": 300,
+        "camp_name_mi18n": "达识结社",
+        "avatar_profession": 3,
+        "rarity": "S",
+        "rank": 2,
+        "role_square_url": "https://act-webstatic.mihoyo.com/game_record/zzzv2/role_square_avatar/role_square_avatar_1581.png",
+        "equip": [
+          {
+            "id": 34141,
+            "level": 15,
+            "name": "谶羽之誓[1]",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_u0f27d/4a03bec4f9762a883ee0e2e8784ed1b1.png",
+            "rarity": "S",
+            "properties": [
+              {
+                "property_name": "攻击力",
+                "property_id": 12102,
+                "base": "6%",
+                "level": 2,
+                "valid": true,
+                "system_id": 121,
+                "add": 1
+              },
+              {
+                "property_name": "防御力",
+                "property_id": 13102,
+                "base": "9.6%",
+                "level": 2,
+                "valid": false,
+                "system_id": 131,
+                "add": 1
+              }
+            ],
+            "main_properties": [
+              {
+                "property_name": "生命值",
+                "property_id": 11103,
+                "base": "2200",
+                "level": 1,
+                "valid": false,
+                "system_id": 111,
+                "add": 0
+              }
+            ],
+            "equip_suit": {
+              "suit_id": 34100,
+              "name": "谶羽之誓",
+              "own": 4,
+              "desc1": "异常精通+30点。",
+              "desc2": "装备者进入战场时，或被切换为当前操作中角色时，获得增益效果：异常精通提升50点，若装备者为<color=#FFA9DD>流明属性</color>，造成的属性异常伤害提升15%，持续15秒；\\n当装备者为非操作中角色时，则始终持有该增益效果。"
+            },
+            "equipment_type": 1,
+            "invalid_property_cnt": 2,
+            "all_hit": false
+          },
+          "... (3 total)"
+        ],
+        "weapon": {
+          "id": 14158,
+          "level": 60,
+          "name": "空羽复归之诗",
+          "star": 1,
+          "icon": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_u0f27d/f1af9cffe1eced08be298670d2574948.png",
+          "rarity": "S",
+          "talent_title": "失乐园",
+          "talent_content": "异常精通提升<color=#2BAD00>96</color>点；装备者触发<color=#FFA9DD>[异化]</color>反应时，自身获得属性异常伤害提升<color=#2BAD00>20%</color>的效果，并为全队角色施加造成的伤害提升<color=#2BAD00>30%</color>效果，效果均持续30秒，重复触发时刷新持续时间。",
+          "profession": 3
+        },
+        "properties": [
+          {
+            "property_name": "生命值",
+            "property_id": 1,
+            "base": "7482",
+            "add": "2872",
+            "final": "10354"
+          },
+          {
+            "property_name": "攻击力",
+            "property_id": 2,
+            "base": "1566",
+            "add": "2393",
+            "final": "3959"
+          },
+          {
+            "property_name": "防御力",
+            "property_id": 3,
+            "base": "600",
+            "add": "329",
+            "final": "929"
+          },
+          {
+            "property_name": "冲击力",
+            "property_id": 4,
+            "base": "",
+            "add": "",
+            "final": "83"
+          },
+          "... (5 total)"
+        ],
+        "skills": [
+          {
+            "level": 12,
+            "skill_type": 0,
+            "items": [
+              {
+                "title": "普通攻击：蹁跹",
+                "text": "点按 <IconMap:Icon_Normal> 发动：\\n向前方进行至多四段攻击，造成<color=#FFA9DD>流明属性伤害</color>；\\n若普攻命中目标，招式结束后可为自身回复<span style=\"color: #fff\">[浮晖]</span></Term>；\\n第四段普攻结束后可为命中的敌人施加1个<color=#FFA9DD>[流明积蓄点]</color>。",
+                "awaken": false
+              },
+              {
+                "title": "普通攻击：独舞",
+                "text": "长按 <IconMap:Icon_Normal> 发动：\\n向前方进行范围斩击，造成<color=#FFA9DD>流明属性伤害</color>；\\n若命中目标，招式结束后可为自身回复<color=#FFFFFF>[浮晖]</color>。",
+                "awaken": false
+              },
+              {
+                "title": "普通攻击：垂虹",
+                "text": "当蕾米埃尔身上储存有<span style=\"color: #fff\">[虚曜]</span></Term>时，长按 <IconMap:Icon_Normal> 发动：\\n向前方发动大范围强力攻击，造成<color=#FFA9DD>流明属性伤害</color>；\\n招式结束后可为自身回复大量<color=#FFFFFF>[浮晖]</color>；\\n若命中目标，招式结束后可触发<span style=\"color: #fff\">[耀变]</span></Term>效果，倍率为<color=#2BAD00>160%</color>；\\n发动后会清空身上储存的所有<color=#FFFFFF>[虚曜]</color>。",
+                "awaken": false
+              },
+              {
+                "title": "普通攻击：惊鸿",
+                "text": "当蕾米埃尔身上储存有<color=#FFFFFF>[虚曜]</color>，且自身处于<color=#FFFFFF>[映曜]</color>状态时，长按 <IconMap:Icon_Normal> 发动：\\n向前方发动大范围强力攻击，造成<color=#FFA9DD>流明属性伤害</color>；\\n招式结束后可为自身回复大量<color=#FFFFFF>[浮晖]</color>；\\n若命中目标，招式结束后可触发<color=#FFFFFF>[耀变]</color>效果，倍率为<color=#2BAD00>320%</color>；\\n发动后会清空身上储存的所有<color=#FFFFFF>[虚曜]</color>。",
+                "awaken": false
+              }
+            ],
+            "awaken_state": "AwakenStateNotVisible"
+          },
+          "... (3 total)"
+        ],
+        "ranks": [
+          {
+            "id": 1,
+            "name": "青涩誓言",
+            "desc": "进入战场时，蕾米埃尔获得3个特殊<span style=\"color: #fff\">[虚曜]</span></Term>，在勘域模式中此效果180秒内最多触发一次；\\n蕾米埃尔触发<span style=\"color: #fff\">[耀变]</span></Term>效果造成伤害时，无视目标50%的全属性伤害抗性；\\n发动<color=#FFFFFF>[支援技：花羽轮舞]</color>时，获得200点喧响值，18秒内最多触发1次此效果；\\n蕾米埃尔处于<span style=\"color: #fff\">[相变时流]</span></Term>状态下时，队伍中其他角色造成的属性异常伤害提升10%。",
+            "pos": 1,
+            "is_unlocked": true
+          },
+          "... (3 total)"
+        ],
+        "awaken_state": "AwakenStateNotVisible"
+      }
+    ],
+    "equip_wiki": {
+      "34141": "https://baike.mihoyo.com/zzz/wiki/content/2116/detail?bbs_presentation_style=fullscreen",
+      "31342": "https://baike.mihoyo.com/zzz/wiki/content/191/detail?bbs_presentation_style=fullscreen"
+    },
+    "weapon_wiki": {
+      "14158": "https://baike.mihoyo.com/zzz/wiki/content/2109/detail?bbs_presentation_style=fullscreen"
+    },
+    "avatar_wiki": {
+      "1581": "https://baike.mihoyo.com/zzz/wiki/content/2076/detail?bbs_presentation_style=fullscreen"
+    }
+  }
+}
+```
+
+</details>
+
+<h3 id="zzz-shiyu">获取式舆防卫战信息</h3>
+
+对应「式舆防卫战」（接口路径历史命名 `hadal`）。
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> LToken
+
+`https://api-takumi-record.mihoyo.com/event/game_record_zzz/api/zzz/hadal_info_v2`
+
+**国际服：**
+
+`https://sg-public-api.hoyolab.com/event/game_record_zzz/api/zzz/hadal_info_v2`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| role_id | num | 绝区零 UID | |
+| server | str | 服务器名称 | |
+| schedule_type | num | 期次 | `1` 当期；`2` 上期 |
+| need_all | bool | 是否需要完整数据 | 可选；示例为 `true` |
+| without_v2_detail | bool | 是否省略 v2 层详情 | `true` 时省略层详情；`false` 返回完整明细 |
+
+**JSON返回：**
+
+根对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码 | |
+| message | str | 返回消息 | |
+| data | obj | 式舆数据 | |
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| hadal_ver | str | 数据版本 | 如 `v2`；旧版可含 `hadal_info_v1` |
+| hadal_info_v1 | obj | 旧版详情 | 可选 |
+| hadal_info_v2 | obj | v2 详情 | |
+| nick_name | str | 昵称 | |
+| icon | str | 头像 | |
+
+`data`对象→`hadal_info_v2`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| zone_id | num | 区域 / 期次 ID | |
+| hadal_begin_time | obj | 开始时间 | 时间对象 |
+| hadal_end_time | obj | 结束时间 | 时间对象 |
+| pass_fifth_floor | bool | 是否通过第五层 | |
+| brief | obj | 简报 | |
+| fitfh_layer_detail | obj | 第五层详情 | 字段名字面量为 `fitfh` |
+| fourth_layer_detail | obj | 第四层详情 | |
+| begin_time | str | 开始时间戳字符串 | |
+| end_time | str | 结束时间戳字符串 | |
+
+`data`对象→`hadal_info_v2`对象→`brief`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| cur_period_zone_layer_count | num | 当期通关层数 | |
+| score | num | 分数 | |
+| rank_percent | num | 排名百分比 | 0.01% 单位 |
+| rating | str | 评级 | |
+| max_score | num | 满分 | |
+
+`data`对象→`hadal_info_v2`对象→`fitfh_layer_detail`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| layer_challenge_info_list | arr | 第五层各节点挑战 | |
+
+`data`对象→`hadal_info_v2`对象→`fitfh_layer_detail`对象→`layer_challenge_info_list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| layer_id | num | 节点 ID | |
+| rating | str | 评级 | |
+| buffer | obj | Buff | `title` / `text` |
+| score | num | 分数 | |
+| avatar_list | arr | 出战代理人 | 简要字段 |
+| buddy | obj | 出战邦布 | |
+| monster_pic | str | 敌人图 | |
+| max_score | num | 节点满分 | |
+| challenge_time | obj | 挑战时间 | 时间对象 |
+
+`data`对象→`hadal_info_v2`对象→`fourth_layer_detail`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| buffer | obj | Buff | |
+| challenge_time | obj | 挑战时间 | |
+| rating | str | 评级 | |
+| layer_challenge_info_list | arr | 第四层节点 | 结构类似第五层 |
+
+<details>
+<summary>查看示例（节选）</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "hadal_ver": "v2",
+    "hadal_info_v2": {
+      "zone_id": 62053,
+      "hadal_begin_time": {
+        "year": 2026,
+        "month": 7,
+        "day": 24,
+        "hour": 4,
+        "minute": 0,
+        "second": 0
+      },
+      "hadal_end_time": {
+        "year": 2026,
+        "month": 8,
+        "day": 7,
+        "hour": 3,
+        "minute": 59,
+        "second": 59
+      },
+      "pass_fifth_floor": true,
+      "brief": {
+        "cur_period_zone_layer_count": 5,
+        "score": 107741,
+        "rank_percent": 3284,
+        "rating": "S+",
+        "max_score": 150000
+      },
+      "fitfh_layer_detail": {
+        "layer_challenge_info_list": [
+          {
+            "layer_id": 62053051,
+            "rating": "S",
+            "buffer": {
+              "title": "终幕协奏",
+              "text": "· 代理人的<color=#FFFFFF>[终结技]</color>、<color=#FFFFFF>[连携技]</color>造成的伤害提升40%。\\n· <color=#FFFFFF>[连携技]</color>命中敌人后，其失衡易伤倍率提升20%，失衡恢复速度降低15%，持续15秒，重复触发时刷新持续时间。"
+            },
+            "score": 42665,
+            "avatar_list": [
+              {
+                "id": 1431,
+                "level": 60,
+                "rarity": "S",
+                "element_type": 200,
+                "avatar_profession": 1,
+                "rank": 1,
+                "role_square_url": "https://act-webstatic.mihoyo.com/game_record/zzzv2/role_square_avatar/role_square_avatar_1431.png",
+                "sub_element_type": 4
+              },
+              "... (3 total)"
+            ],
+            "buddy": {
+              "id": 54021,
+              "rarity": "S",
+              "level": 60,
+              "bangboo_rectangle_url": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/c233b63c6f02dd01c94725762feebc74.png"
+            },
+            "monster_pic": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/5f369c40b2ea806b5271dd7b6117dae6.png",
+            "max_score": 50000,
+            "challenge_time": {
+              "year": 2026,
+              "month": 7,
+              "day": 24,
+              "hour": 23,
+              "minute": 27,
+              "second": 17
+            }
+          },
+          "... (3 total)"
+        ]
+      },
+      "fourth_layer_detail": {
+        "buffer": {
+          "title": "终幕协奏",
+          "text": "· 代理人的<color=#FFFFFF>[终结技]</color>、<color=#FFFFFF>[连携技]</color>造成的伤害提升40%。\\n· <color=#FFFFFF>[连携技]</color>命中敌人后，其失衡易伤倍率提升20%，失衡恢复速度降低15%，持续15秒，重复触发时刷新持续时间。"
+        },
+        "challenge_time": {
+          "year": 2026,
+          "month": 7,
+          "day": 24,
+          "hour": 23,
+          "minute": 23,
+          "second": 39
+        },
+        "rating": "S",
+        "layer_challenge_info_list": [
+          {
+            "layer_id": 62053041,
+            "avatar_list": [
+              {
+                "id": 1431,
+                "level": 60,
+                "rarity": "S",
+                "element_type": 200,
+                "avatar_profession": 1,
+                "rank": 1,
+                "role_square_url": "https://act-webstatic.mihoyo.com/game_record/zzzv2/role_square_avatar/role_square_avatar_1431.png",
+                "sub_element_type": 4
+              },
+              "... (3 total)"
+            ],
+            "buddy": {
+              "id": 54021,
+              "rarity": "S",
+              "level": 60,
+              "bangboo_rectangle_url": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/c233b63c6f02dd01c94725762feebc74.png"
+            },
+            "challenge_time": {
+              "year": 2026,
+              "month": 7,
+              "day": 24,
+              "hour": 23,
+              "minute": 23,
+              "second": 39
+            }
+          },
+          "... (2 total)"
+        ]
+      },
+      "begin_time": "1784836800",
+      "end_time": "1786046399"
+    },
+    "nick_name": "示例昵称",
+    "icon": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/a959c9810fc3a7b876451803d58d7f47.png"
+  }
+}
+```
+
+</details>
+
+---
+
+<h3 id="zzz-deadly-assault">获取危局强袭战信息</h3>
+
+对应「危局强袭战」（接口路径 `hadal_mem_*`）。
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> LToken
+
+`https://api-takumi-record.mihoyo.com/event/game_record_zzz/api/zzz/hadal_mem_detail_v2`
+
+**国际服：**
+
+`https://sg-public-api.hoyolab.com/event/game_record_zzz/api/zzz/hadal_mem_detail_v2`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| uid | num | 绝区零 UID | 参数名 `uid`（非 `role_id`） |
+| region | str | 服务器名称 | 参数名 `region`（非 `server`） |
+| schedule_type | num | 期次 | `1` 当期；`2` 上期 |
+
+**JSON返回：**
+
+根对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码 | |
+| message | str | 返回消息 | |
+| data | obj | 危局详情 | |
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| start_time | obj | 开始时间 | 时间对象 |
+| end_time | obj | 结束时间 | 时间对象 |
+| rank_percent | num | 全服排名百分比 | 0.01% 单位 |
+| list | arr | 普通节点记录 | |
+| has_data | bool | 是否有数据 | |
+| nick_name | str | 昵称 | |
+| avatar_icon | str | 头像 | |
+| total_score | num | 总分 | |
+| total_star | num | 总星 | |
+| zone_id | num | 期次 ID | |
+| total_max_score | num | 本期满分 | |
+| room_max_score | num | 单节点满分 | |
+| has_hard | bool | 是否有绝境挑战 | |
+| hard_list | arr | 绝境节点记录 | 结构同 `list` |
+| hard_rank_percent | num | 绝境排名百分比 | |
+
+`data`对象→`list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| score | num | 分数 | |
+| star | num | 星数 | |
+| total_star | num | 该节点满星 | |
+| challenge_time | obj | 挑战时间 | 时间对象 |
+| boss | arr | BOSS 信息 | |
+| buffer | arr | Buff 列表 | |
+| avatar_list | arr | 出战代理人 | |
+| buddy | obj | 出战邦布 | |
+
+`data`对象→`list`数组→对象→`boss`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| icon | str | 图标 | |
+| name | str | 名称 | |
+| race_icon | str | 种族图标 | |
+| bg_icon | str | 背景图 | |
+
+`data`对象→`list`数组→对象→`buffer`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| icon | str | 图标 | |
+| desc | str | 描述 | 可含 color 标签 |
+| name | str | 名称 | |
+
+`data`对象→`list`数组→对象→`avatar_list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| id | num | 代理人 ID | |
+| level | num | 等级 | |
+| element_type | num | 属性 | |
+| avatar_profession | num | 职业 | |
+| rarity | str | 稀有度 | |
+| rank | num | 影画 | |
+| role_square_url | str | 方图 | |
+| sub_element_type | num | 副属性 | |
+
+`data`对象→`list`数组→对象→`buddy`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| id | num | 邦布 ID | |
+| rarity | str | 稀有度 | |
+| level | num | 等级 | |
+| bangboo_rectangle_url | str | 图标 | |
+
+<details>
+<summary>查看示例（节选）</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "start_time": { "year": 2026, "month": 7, "day": 29, "hour": 4, "minute": 0, "second": 0 },
+    "end_time": { "year": 2026, "month": 8, "day": 14, "hour": 3, "minute": 59, "second": 59 },
+    "rank_percent": 697,
+    "list": [
+      {
+        "score": 63025,
+        "star": 3,
+        "total_star": 3,
+        "challenge_time": { "year": 2026, "month": 7, "day": 31, "hour": 19, "minute": 42, "second": 10 },
+        "boss": [
+          {
+            "icon": "https://...",
+            "name": "基塔布鲁·滞变畸兽",
+            "race_icon": "https://...",
+            "bg_icon": "https://..."
+          }
+        ],
+        "buffer": [
+          { "icon": "https://...", "desc": "...", "name": "勠力" }
+        ],
+        "avatar_list": [
+          {
+            "id": 1581,
+            "level": 60,
+            "element_type": 300,
+            "avatar_profession": 3,
+            "rarity": "S",
+            "rank": 2,
+            "role_square_url": "https://...",
+            "sub_element_type": 0
+          }
+        ],
+        "buddy": {
+          "id": 54022,
+          "rarity": "S",
+          "level": 60,
+          "bangboo_rectangle_url": "https://..."
+        }
+      }
+    ],
+    "has_data": true,
+    "nick_name": "示例昵称",
+    "avatar_icon": "https://...",
+    "total_score": 144946,
+    "total_star": 9,
+    "zone_id": 690421,
+    "total_max_score": 195000,
+    "room_max_score": 65000,
+    "has_hard": true,
+    "hard_list": [],
+    "hard_rank_percent": 1898
+  }
+}
+```
+
+</details>
+
+---
+
+<h3 id="zzz-deadly-assault-abstract">获取危局强袭战摘要</h3>
+
+摘要信息（分数、星数、排名），不含完整出战明细。
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> LToken
+
+`https://api-takumi-record.mihoyo.com/event/game_record_zzz/api/zzz/hadal_mem_abstract_info`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| uid | num | 绝区零 UID | |
+| region | str | 服务器名称 | |
+| schedule_type | num | 期次 | `1` 当期；`2` 上期 |
+
+**JSON返回：**
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| nick_name | str | 昵称 | |
+| avatar_icon | str | 头像 | |
+| list | arr | 摘要列表 | |
+| start_time | obj | 开始时间 | 时间对象 |
+| end_time | obj | 结束时间 | 时间对象 |
+| total_max_score | num | 本期满分 | |
+| room_max_score | num | 单节点满分 | |
+
+`data`对象→`list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| score | num | 分数 | |
+| star | num | 星数 | |
+| nest_type | str | 类型 | 如 `General` |
+| rank | num | 排名相关 | |
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "nick_name": "示例昵称",
+    "avatar_icon": "https://...",
+    "list": [
+      { "score": 92919, "star": 9, "nest_type": "General", "rank": 2099 }
+    ],
+    "start_time": { "year": 2026, "month": 7, "day": 17, "hour": 4, "minute": 0, "second": 0 },
+    "end_time": { "year": 2026, "month": 7, "day": 29, "hour": 3, "minute": 59, "second": 59 },
+    "total_max_score": 195000,
+    "room_max_score": 65000
+  }
+}
+```
+
+</details>
+
+---
+
+<h3 id="zzz-threshold-abstract">获取临界推演摘要</h3>
+
+对应「临界推演」（接口路径 `void_front_*`）。
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> LToken
+
+`https://api-takumi-record.mihoyo.com/event/game_record_zzz/api/zzz/void_front_battle_abstract_info`
+
+**国际服：**
+
+`https://sg-public-api.hoyolab.com/event/game_record_zzz/api/zzz/void_front_battle_abstract_info`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| uid | num | 绝区零 UID | |
+| region | str | 服务器名称 | |
+
+**JSON返回：**
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| has_detail_record | bool | 是否有详情记录 | |
+| void_front_battle_abstract_info_brief | obj | 简报 | |
+
+`data`对象→`void_front_battle_abstract_info_brief`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| void_front_id | num | 期次 ID | 拉详情使用 |
+| end_ts_over_42_days | bool | 结束是否超过约 42/43 天 | |
+| end_ts | num | 结束 Unix 时间戳 | |
+| has_ending_record | bool | 是否完成结局 | |
+| ending_record_name | str | 结局名称 | |
+| ending_record_bg_pic | str | 结局背景图 | |
+| total_score | num | 总分 | |
+| rank_percent | num | 排名百分比 | |
+| max_score | num | 满分 | |
+| left_ts | num | 剩余秒数 | |
+| ending_record_id | num | 结局 ID | |
+
+---
+
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "has_detail_record": true,
+    "void_front_battle_abstract_info_brief": {
+      "void_front_id": 201,
+      "end_ts_over_42_days": true,
+      "end_ts": 0,
+      "has_ending_record": true,
+      "ending_record_name": "结局一·侦探不止一个！",
+      "ending_record_bg_pic": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/ef4e7b86d70766ce95a0b0faaf7fbad6.png",
+      "total_score": 235828,
+      "rank_percent": 4357,
+      "max_score": 481000,
+      "left_ts": 0,
+      "ending_record_id": 4,
+      "start_time": {
+        "year": 2026,
+        "month": 2,
+        "day": 5,
+        "hour": 4,
+        "minute": 0,
+        "second": 0
+      },
+      "end_time": null
+    }
+  }
+}
+```
+
+</details>
+
+<h3 id="zzz-threshold-detail">获取临界推演详情</h3>
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> LToken
+
+`https://api-takumi-record.mihoyo.com/event/game_record_zzz/api/zzz/void_front_battle_detail`
+
+**国际服：**
+
+`https://sg-public-api.hoyolab.com/event/game_record_zzz/api/zzz/void_front_battle_detail`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| uid | num | 绝区零 UID | |
+| region | str | 服务器名称 | |
+| void_front_id | num | 临界推演期次 ID | 来自摘要 / 首页 `void_front_brief.void_front_id` |
+
+**JSON返回：**
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| void_front_battle_abstract_info_brief | obj | 简报 | 字段同摘要 brief |
+| boss_challenge_record | obj | BOSS 节点记录 | |
+| main_challenge_record_list | arr | 前置 / 主线节点记录 | |
+| role_basic_info | obj | 账号展示信息 | |
+
+节点记录字段（`main_challenge_record` / 列表项）：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| battle_id | num | 战斗 ID | |
+| node_id | num | 节点 ID | |
+| name | str | 节点名 | |
+| score | num | 分数 | |
+| star | str | 星级（字符串） | |
+| score_ratio | str | 分数倍率等 | |
+| challenge_time | obj | 挑战时间 | 时间对象 |
+| buffer | obj | Buff | `icon` / `desc` / `name` |
+| max_score | num | 满分 | |
+| avatar_list | arr | 出战代理人 | |
+| buddy | obj | 邦布 | |
+| sub_challenge_record | arr | 子挑战 | 可选 |
+
+---
+
+
+<details>
+<summary>查看示例（节选）</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "void_front_battle_abstract_info_brief": {
+      "void_front_id": 201,
+      "end_ts_over_42_days": true,
+      "end_ts": 0,
+      "has_ending_record": true,
+      "ending_record_name": "结局一·侦探不止一个！",
+      "ending_record_bg_pic": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/ef4e7b86d70766ce95a0b0faaf7fbad6.png",
+      "total_score": 235828,
+      "rank_percent": 4357,
+      "max_score": 481000,
+      "left_ts": 0,
+      "ending_record_id": 4,
+      "start_time": {
+        "year": 2026,
+        "month": 2,
+        "day": 5,
+        "hour": 4,
+        "minute": 0,
+        "second": 0
+      },
+      "end_time": null
+    },
+    "boss_challenge_record": {
+      "boss_info": {
+        "icon": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/99ce6d515edb42905414a1cfa05fee98.png",
+        "name": "叛律孤歌·???",
+        "race_icon": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/4a0c564782a2084b9fe88abeadb913ba.png",
+        "bg_icon": "https://act-webstatic.mihoyo.com/game_record/zzzv2/boss_bg/boss_bg_4.png"
+      },
+      "main_challenge_record": {
+        "battle_id": 2010401,
+        "node_id": 20104,
+        "name": "LAST STAGE",
+        "score": 62203,
+        "star": "S",
+        "score_ratio": "2.5",
+        "challenge_time": {
+          "year": 2026,
+          "month": 3,
+          "day": 11,
+          "hour": 11,
+          "minute": 46,
+          "second": 36
+        },
+        "buffer": {
+          "icon": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/d3f4b45b9dda3de0094228efbe914551.png",
+          "desc": "· 代理人的生命值上限<color=#2BAD00>提升30%</color>，终结技造成的伤害<color=#2BAD00>提升40%</color>。\\n· 代理人释放终结技后，能量和闪能获得效率 <color=#2BAD00>提升15%</color>，<color=#FE437E>以太属性伤害</color>和<color=#98EFF0>冰属性伤害</color><color=#2BAD00>提升40%</color>，持续20秒。",
+          "name": "凝神"
+        },
+        "max_score": 182000,
+        "avatar_list": [
+          {
+            "id": 1451,
+            "level": 60,
+            "element_type": 205,
+            "avatar_profession": 4,
+            "rarity": "S",
+            "rank": 0,
+            "role_square_url": "https://act-webstatic.mihoyo.com/game_record/zzzv2/role_square_avatar/role_square_avatar_1451.png",
+            "sub_element_type": 0
+          },
+          "... (3 total)"
+        ],
+        "buddy": {
+          "id": 54017,
+          "rarity": "S",
+          "level": 60,
+          "bangboo_rectangle_url": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/092e16be49985ad9551ac8d48851789b.png"
+        },
+        "sub_challenge_record": [
+          {
+            "battle_id": 2010403,
+            "name": "3-1",
+            "star": "S",
+            "avatar_list": [
+              {
+                "id": 1091,
+                "level": 60,
+                "element_type": 202,
+                "avatar_profession": 3,
+                "rarity": "S",
+                "rank": 0,
+                "role_square_url": "https://act-webstatic.mihoyo.com/game_record/zzzv2/role_square_avatar/role_square_avatar_1091.png",
+                "sub_element_type": 1
+              },
+              "... (3 total)"
+            ],
+            "buddy": {
+              "id": 54001,
+              "rarity": "S",
+              "level": 60,
+              "bangboo_rectangle_url": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/f71b2752338a0dce92135950285b3cd7.png"
+            },
+            "buffer": {
+              "icon": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/a651daede18a66f047e809d57020dcac.png",
+              "desc": "· 代理人的属性异常积蓄效率<color=#2BAD00>提升20%</color>。\\n· 对敌人施加<color=#FFFFFF>属性异常</color>效果时，全队<color=#2BAD00>提升60点异常精通</color>，<color=#FFFFFF>紊乱</color>造成的伤害<color=#2BAD00>提升40%</color>，持续15秒。",
+              "name": "异象"
+            }
+          },
+          "... (3 total)"
+        ]
+      }
+    },
+    "main_challenge_record_list": [
+      {
+        "battle_id": 2010201,
+        "node_id": 20102,
+        "name": "STAGE 02",
+        "score": 96763,
+        "star": "S",
+        "score_ratio": "2.3",
+        "challenge_time": {
+          "year": 2026,
+          "month": 3,
+          "day": 11,
+          "hour": 11,
+          "minute": 20,
+          "second": 9
+        },
+        "buffer": {
+          "icon": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/b5a0e3332e152e377984684296fb255d.png",
+          "desc": "· 代理人的攻击力<color=#2BAD00>提升16%</color>，敌人的失衡易伤倍率<color=#2BAD00>提升30%</color>。\\n· 处于以太帷幕中的代理人，攻击命中敌人时无视其<color=#2BAD00>10%</color>的<color=#F0D12B>物理属性伤害抗性</color>和<color=#2BAD00>15%</color>的防御力。",
+          "name": "聚气"
+        },
+        "max_score": 149500,
+        "avatar_list": [
+          {
+            "id": 1431,
+            "level": 60,
+            "element_type": 200,
+            "avatar_profession": 1,
+            "rarity": "S",
+            "rank": 1,
+            "role_square_url": "https://act-webstatic.mihoyo.com/game_record/zzzv2/role_square_avatar/role_square_avatar_1431.png",
+            "sub_element_type": 4
+          },
+          "... (3 total)"
+        ],
+        "buddy": {
+          "id": 54021,
+          "rarity": "S",
+          "level": 60,
+          "bangboo_rectangle_url": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/c233b63c6f02dd01c94725762feebc74.png"
+        },
+        "sub_challenge_record": [
+          {
+            "battle_id": 2010202,
+            "name": "2-1",
+            "star": "S",
+            "avatar_list": [
+              {
+                "id": 1451,
+                "level": 60,
+                "element_type": 205,
+                "avatar_profession": 4,
+                "rarity": "S",
+                "rank": 0,
+                "role_square_url": "https://act-webstatic.mihoyo.com/game_record/zzzv2/role_square_avatar/role_square_avatar_1451.png",
+                "sub_element_type": 0
+              },
+              "... (3 total)"
+            ],
+            "buddy": {
+              "id": 54017,
+              "rarity": "S",
+              "level": 60,
+              "bangboo_rectangle_url": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/092e16be49985ad9551ac8d48851789b.png"
+            },
+            "buffer": {
+              "icon": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/d3f4b45b9dda3de0094228efbe914551.png",
+              "desc": "· 代理人的喧响值获取效率<color=#2BAD00>提升20%</color>。\\n·<color=#FFFFFF>[终结技]</color>和<color=#FFFFFF>[强化特殊技]</color>命中敌人时，无视其<color=#2BAD00>20%</color>的伤害抗性，<color=#FFFFFF>[终结技]</color>命中敌人后，代理人的<color=#FFFFFF>[终结技]</color>和<color=#FFFFFF>[强化特殊技]</color>造成的伤害<color=#2BAD00>提升50%</color>，持续30秒，重复触发时刷新持续时间。",
+              "name": "奏鸣"
+            }
+          },
+          "... (3 total)"
+        ]
+      },
+      "... (2 total)"
+    ],
+    "role_basic_info": {
+      "server": "prod_gf_cn",
+      "nickname": "示例昵称",
+      "icon": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/a959c9810fc3a7b876451803d58d7f47.png"
+    }
+  }
+}
+```
+
+</details>
+
+<h3 id="zzz-threshold-period">获取临界推演周期详情</h3>
+
+按 `schedule_type` 拉取某一周期的完整战斗详情。
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> LToken
+
+`https://api-takumi-record.mihoyo.com/event/game_record_zzz/api/zzz/void_front_battle_period_detail`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| uid | num | 绝区零 UID | |
+| region | str | 服务器名称 | |
+| schedule_type | num | 期次 | `1` 当期等 |
+
+**JSON返回：**
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| void_front_id | num | 期次 ID | |
+| void_front_battle_detail | obj | 详情 | 结构与 [获取临界推演详情](#zzz-threshold-detail) 的 `data` 相近 |
+
+---
+
+<details>
+<summary>查看示例（节选）</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "void_front_id": 201,
+    "void_front_battle_detail": {
+      "void_front_battle_abstract_info_brief": {
+        "void_front_id": 201,
+        "end_ts_over_42_days": true,
+        "end_ts": 0,
+        "has_ending_record": true,
+        "ending_record_name": "结局一·侦探不止一个！",
+        "ending_record_bg_pic": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/ef4e7b86d70766ce95a0b0faaf7fbad6.png",
+        "total_score": 235828,
+        "rank_percent": 4357,
+        "max_score": 481000,
+        "left_ts": 0,
+        "ending_record_id": 4,
+        "start_time": {
+          "year": 2026,
+          "month": 2,
+          "day": 5,
+          "hour": 4,
+          "minute": 0,
+          "second": 0
+        },
+        "end_time": null
+      },
+      "boss_challenge_record": {
+        "boss_info": {
+          "icon": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/99ce6d515edb42905414a1cfa05fee98.png",
+          "name": "叛律孤歌·???",
+          "race_icon": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/4a0c564782a2084b9fe88abeadb913ba.png",
+          "bg_icon": "https://act-webstatic.mihoyo.com/game_record/zzzv2/boss_bg/boss_bg_4.png"
+        },
+        "main_challenge_record": {
+          "battle_id": 2010401,
+          "node_id": 20104,
+          "name": "LAST STAGE",
+          "score": 62203,
+          "star": "S",
+          "score_ratio": "2.5",
+          "challenge_time": {
+            "year": 2026,
+            "month": 3,
+            "day": 11,
+            "hour": 11,
+            "minute": 46,
+            "second": 36
+          },
+          "buffer": {
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/d3f4b45b9dda3de0094228efbe914551.png",
+            "desc": "· 代理人的生命值上限<color=#2BAD00>提升30%</color>，终结技造成的伤害<color=#2BAD00>提升40%</color>。\\n· 代理人释放终结技后，能量和闪能获得效率 <color=#2BAD00>提升15%</color>，<color=#FE437E>以太属性伤害</color>和<color=#98EFF0>冰属性伤害</color><color=#2BAD00>提升40%</color>，持续20秒。",
+            "name": "凝神"
+          },
+          "max_score": 182000,
+          "avatar_list": [
+            {
+              "id": 1451,
+              "level": 60,
+              "element_type": 205,
+              "avatar_profession": 4,
+              "rarity": "S",
+              "rank": 0,
+              "role_square_url": "https://act-webstatic.mihoyo.com/game_record/zzzv2/role_square_avatar/role_square_avatar_1451.png",
+              "sub_element_type": 0
+            },
+            "... (3 total)"
+          ],
+          "buddy": {
+            "id": 54017,
+            "rarity": "S",
+            "level": 60,
+            "bangboo_rectangle_url": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/092e16be49985ad9551ac8d48851789b.png"
+          },
+          "sub_challenge_record": [
+            {
+              "battle_id": 2010403,
+              "name": "3-1",
+              "star": "S",
+              "avatar_list": [
+                {
+                  "id": 1091,
+                  "level": 60,
+                  "element_type": 202,
+                  "avatar_profession": 3,
+                  "rarity": "S",
+                  "rank": 0,
+                  "role_square_url": "https://act-webstatic.mihoyo.com/game_record/zzzv2/role_square_avatar/role_square_avatar_1091.png",
+                  "sub_element_type": 1
+                },
+                "... (3 total)"
+              ],
+              "buddy": {
+                "id": 54001,
+                "rarity": "S",
+                "level": 60,
+                "bangboo_rectangle_url": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/f71b2752338a0dce92135950285b3cd7.png"
+              },
+              "buffer": {
+                "icon": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/a651daede18a66f047e809d57020dcac.png",
+                "desc": "· 代理人的属性异常积蓄效率<color=#2BAD00>提升20%</color>。\\n· 对敌人施加<color=#FFFFFF>属性异常</color>效果时，全队<color=#2BAD00>提升60点异常精通</color>，<color=#FFFFFF>紊乱</color>造成的伤害<color=#2BAD00>提升40%</color>，持续15秒。",
+                "name": "异象"
+              }
+            },
+            "... (3 total)"
+          ]
+        }
+      },
+      "main_challenge_record_list": [
+        {
+          "battle_id": 2010201,
+          "node_id": 20102,
+          "name": "STAGE 02",
+          "score": 96763,
+          "star": "S",
+          "score_ratio": "2.3",
+          "challenge_time": {
+            "year": 2026,
+            "month": 3,
+            "day": 11,
+            "hour": 11,
+            "minute": 20,
+            "second": 9
+          },
+          "buffer": {
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/b5a0e3332e152e377984684296fb255d.png",
+            "desc": "· 代理人的攻击力<color=#2BAD00>提升16%</color>，敌人的失衡易伤倍率<color=#2BAD00>提升30%</color>。\\n· 处于以太帷幕中的代理人，攻击命中敌人时无视其<color=#2BAD00>10%</color>的<color=#F0D12B>物理属性伤害抗性</color>和<color=#2BAD00>15%</color>的防御力。",
+            "name": "聚气"
+          },
+          "max_score": 149500,
+          "avatar_list": [
+            {
+              "id": 1431,
+              "level": 60,
+              "element_type": 200,
+              "avatar_profession": 1,
+              "rarity": "S",
+              "rank": 1,
+              "role_square_url": "https://act-webstatic.mihoyo.com/game_record/zzzv2/role_square_avatar/role_square_avatar_1431.png",
+              "sub_element_type": 4
+            },
+            "... (3 total)"
+          ],
+          "buddy": {
+            "id": 54021,
+            "rarity": "S",
+            "level": 60,
+            "bangboo_rectangle_url": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/c233b63c6f02dd01c94725762feebc74.png"
+          },
+          "sub_challenge_record": [
+            {
+              "battle_id": 2010202,
+              "name": "2-1",
+              "star": "S",
+              "avatar_list": [
+                {
+                  "id": 1451,
+                  "level": 60,
+                  "element_type": 205,
+                  "avatar_profession": 4,
+                  "rarity": "S",
+                  "rank": 0,
+                  "role_square_url": "https://act-webstatic.mihoyo.com/game_record/zzzv2/role_square_avatar/role_square_avatar_1451.png",
+                  "sub_element_type": 0
+                },
+                "... (3 total)"
+              ],
+              "buddy": {
+                "id": 54017,
+                "rarity": "S",
+                "level": 60,
+                "bangboo_rectangle_url": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/092e16be49985ad9551ac8d48851789b.png"
+              },
+              "buffer": {
+                "icon": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/d3f4b45b9dda3de0094228efbe914551.png",
+                "desc": "· 代理人的喧响值获取效率<color=#2BAD00>提升20%</color>。\\n·<color=#FFFFFF>[终结技]</color>和<color=#FFFFFF>[强化特殊技]</color>命中敌人时，无视其<color=#2BAD00>20%</color>的伤害抗性，<color=#FFFFFF>[终结技]</color>命中敌人后，代理人的<color=#FFFFFF>[终结技]</color>和<color=#FFFFFF>[强化特殊技]</color>造成的伤害<color=#2BAD00>提升50%</color>，持续30秒，重复触发时刷新持续时间。",
+                "name": "奏鸣"
+              }
+            },
+            "... (3 total)"
+          ]
+        },
+        "... (2 total)"
+      ],
+      "role_basic_info": {
+        "server": "prod_gf_cn",
+        "nickname": "示例昵称",
+        "icon": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/a959c9810fc3a7b876451803d58d7f47.png"
+      }
+    }
+  }
+}
+```
+
+</details>
+
+<h3 id="zzz-month-info">获取绳网月报</h3>
+
+对应「绳网月报 / 开拓月历」类收入总结（菲林、母带、邦布券等）。
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> LToken
+
+`https://api-takumi.mihoyo.com/event/nap_ledger/month_info`
+
+**国际服：**
+
+`https://sg-public-api.hoyolab.com/event/nap_ledger/month_info`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| uid | num | 绝区零 UID | |
+| region | str | 服务器名称 | |
+| month | str | 月份 | 格式 `yyyyMM`，如 `202608`；空字符串表示当前月 |
+
+**JSON返回：**
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| uid | str | UID | 字符串 |
+| region | str | 服务器 | |
+| current_month | str | 当前月 | `yyyyMM` |
+| data_month | str | 数据所属月 | |
+| month_data | obj | 月数据 | |
+| optional_month | arr | 可选月份列表 | 字符串数组 |
+| role_info | obj | 角色展示 | |
+
+`data`对象→`month_data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| list | arr | 各资源类型合计 | |
+| income_components | arr | 收入来源构成 | |
+
+`data`对象→`month_data`对象→`list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| data_type | str | 类型枚举 | 见下 |
+| count | num | 数量 | |
+| data_name | str | 显示名 | |
+
+> `data_type` 取值：
+>
+> * `PolychromesData`：菲林
+> * `MatserTapeData`：加密母带 & 原装母带（字面量为 `Matser`）
+> * `BooponsData`：邦布券
+
+`data`对象→`month_data`对象→`income_components`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| action | str | 来源动作 | 如 `daily_activity_rewards`、`shiyu_rewards` |
+| num | num | 数量 | |
+| percent | num | 占比 | |
+
+`data`对象→`role_info`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| nickname | str | 昵称 | |
+| avatar | str | 头像 | |
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "uid": "100000001",
+    "region": "prod_gf_cn",
+    "current_month": "202608",
+    "data_month": "202608",
+    "month_data": {
+      "list": [
+        { "data_type": "PolychromesData", "count": 2935, "data_name": "菲林" },
+        { "data_type": "MatserTapeData", "count": 20, "data_name": "加密母带 & 原装母带" },
+        { "data_type": "BooponsData", "count": 0, "data_name": "邦布券" }
+      ],
+      "income_components": [
+        { "action": "daily_activity_rewards", "num": 1600, "percent": 55 },
+        { "action": "shiyu_rewards", "num": 780, "percent": 27 }
+      ]
+    },
+    "optional_month": ["202608", "202607", "202606"],
+    "role_info": {
+      "nickname": "示例昵称",
+      "avatar": "https://..."
+    }
+  }
+}
+```
+
+</details>
+
+---
+
+<h3 id="zzz-month-detail">获取绳网月报详情</h3>
+
+分页拉取某一资源类型的收入明细。
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> LToken
+
+`https://api-takumi.mihoyo.com/event/nap_ledger/month_detail`
+
+**国际服：**
+
+`https://sg-public-api.hoyolab.com/event/nap_ledger/month_detail`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| uid | num | 绝区零 UID | |
+| region | str | 服务器名称 | |
+| month | str | 月份 | `yyyyMM` |
+| type | str | 资源类型 | 同 `data_type`：`PolychromesData` / `MatserTapeData` / `BooponsData` |
+| current_page | num | 页码 | 从 `1` 开始 |
+| page_size | num | 每页条数 | 如 `20`；最大约 `100` |
+
+**JSON返回：**
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| uid | str | UID | |
+| region | str | 服务器 | |
+| data_month | str | 月份 | |
+| current_page | num | 当前页 | |
+| list | arr | 明细 | |
+| total | num | 总条数 | |
+| data_name | str | 资源显示名 | |
+| data_type | str | 资源类型 | |
+
+`data`对象→`list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| id | str | 记录 ID | |
+| action | str | 来源动作 | |
+| time | str | Unix 时间戳（秒，字符串） | |
+| num | num | 数量 | |
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "uid": "100000001",
+    "region": "prod_gf_cn",
+    "data_month": "202608",
+    "current_page": 1,
+    "list": [
+      {
+        "id": "10000001",
+        "action": "daily_activity_rewards",
+        "time": "1700000000",
+        "num": 20
+      }
+    ],
+    "total": 95,
+    "data_name": "菲林",
+    "data_type": "PolychromesData"
+  }
+}
+```
+
+</details>
+
+---
+
+<h3 id="zzz-gacha-record">获取调频记录</h3>
+
+战绩页「调频记录」。与游戏客户端 **public-operation** 抽卡接口（`common/gacha_record/api/getGachaLog`）不同：本接口使用 Cookie 鉴权，无需 authkey。
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> LToken
+
+`https://api-takumi-record.mihoyo.com/event/game_record_zzz/api/zzz/gacha_record`
+
+**国际服：**
+
+`https://sg-public-api.hoyolab.com/event/game_record_zzz/api/zzz/gacha_record`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| uid | num | 绝区零 UID | |
+| region | str | 服务器名称 | |
+| gacha_type | str/num | 调频类型 | 字符串枚举或数字（见下表） |
+| end_id | str/num | 分页游标 | 首次不传；下一页传上一页最后一条记录的 `id` |
+
+> `gacha_type` 对照：
+>
+> | 字符串 | 数字 | 含义 |
+> | --- | --- | --- |
+> | `GACHA_TYPE_PERMANENT` | `1` | 常驻频段 |
+> | `GACHA_TYPE_CHARACTER_UP` | `2` | 独家频段 |
+> | `GACHA_TYPE_WEAPON_UP` | `3` | 音擎频段 |
+> | `GACHA_TYPE_BANGBOO` | `5` | 邦布频段 |
+> | `GACHA_TYPE_CHARACTER_RETURN` | `102` | 独家重映 |
+> | `GACHA_TYPE_WEAPON_RETURN` | `103` | 音擎回响 |
+
+**JSON返回：**
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| gacha_item_list | arr | 记录列表 | 单页约 20 条 |
+| has_more | bool | 是否还有下一页 | |
+
+`data`对象→`gacha_item_list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| id | str | 记录 ID | 用于 `end_id` 分页 |
+| item_type | str | 物品类型 | 如 `ITEM_TYPE_WEAPON`、`ITEM_TYPE_AVATAR` 等 |
+| item_id | num | 物品 ID | |
+| item_name | str | 名称 | |
+| rarity | str | 稀有度 | `S` / `A` / `B` 等 |
+| date | obj | 获得时间 | 时间对象 |
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "gacha_item_list": [
+      {
+        "id": "1700000000000000001",
+        "item_type": "ITEM_TYPE_WEAPON",
+        "item_id": 12003,
+        "item_name": "「月相」-朔",
+        "rarity": "B",
+        "date": {
+          "year": 2026,
+          "month": 1,
+          "day": 1,
+          "hour": 12,
+          "minute": 0,
+          "second": 0
+        }
+      }
+    ],
+    "has_more": true
+  }
+}
+```
+
+</details>
+
+---
+
+<h3 id="zzz-cur-gacha">获取当前调频信息</h3>
+
+当前卡池 UP、剩余抽数提示、可用票券数量等。
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> LToken
+
+`https://api-takumi-record.mihoyo.com/event/game_record_zzz/api/zzz/cur_gacha_detail`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| uid | num | 绝区零 UID | |
+| region | str | 服务器名称 | |
+
+**JSON返回：**
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| tickets | arr | 票券数量 | |
+| gacha_info_list | arr | 各卡池摘要 | |
+| record_show_gachas | arr | 记录页展示的卡池类型 | 字符串数组 |
+
+`data`对象→`tickets`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| ticket_type | str | 票券类型 | 如 `GACHA_TICKET_TYPE_POLYCHROME` |
+| ticket_cnt | num | 数量 | |
+
+`data`对象→`gacha_info_list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| gacha_type | str | 卡池类型 | |
+| up_s_item_list | arr | 当期 UP 物品 | |
+| sup_lock_show | bool | 是否展示锁定相关 | |
+| more_s_need_cnt | num | 距离下一个 S 还需抽数 | 保底提示 |
+
+`data`对象→`gacha_info_list`数组→对象→`up_s_item_list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| item_type | str | `UP_S_ITEM_TYPE_AVATAR` / `UP_S_ITEM_TYPE_WEAPON` 等 | |
+| avatar | obj | 代理人信息 | 角色 UP 时存在 |
+| weapon | obj | 音擎信息 | 音擎 UP 时存在 |
+
+---
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "tickets": [
+      {
+        "ticket_type": "GACHA_TICKET_TYPE_RECHARGE_MONOCHROME",
+        "ticket_cnt": 1380
+      },
+      {
+        "ticket_type": "GACHA_TICKET_TYPE_POLYCHROME",
+        "ticket_cnt": 45
+      },
+      "... (5 total)"
+    ],
+    "gacha_info_list": [
+      {
+        "gacha_type": "GACHA_TYPE_CHARACTER_UP",
+        "up_s_item_list": [
+          {
+            "item_type": "UP_S_ITEM_TYPE_AVATAR",
+            "avatar": {
+              "avatar_id": 1581,
+              "avatar_name": "蕾米埃尔",
+              "rarity": "S",
+              "icon": "https://act-webstatic.mihoyo.com/game_record/zzzv2/role_square_avatar/role_square_avatar_1581.png",
+              "avatar_profession": 3,
+              "avatar_element_type": 300,
+              "avatar_sub_element_type": 0
+            }
+          },
+          {
+            "item_type": "UP_S_ITEM_TYPE_AVATAR",
+            "avatar": {
+              "avatar_id": 1501,
+              "avatar_name": "爱芮",
+              "rarity": "S",
+              "icon": "https://act-webstatic.mihoyo.com/game_record/zzzv2/role_square_avatar/role_square_avatar_1501.png",
+              "avatar_profession": 3,
+              "avatar_element_type": 205,
+              "avatar_sub_element_type": 0
+            }
+          }
+        ],
+        "sup_lock_show": false,
+        "more_s_need_cnt": 64
+      },
+      {
+        "gacha_type": "GACHA_TYPE_WEAPON_UP",
+        "up_s_item_list": [
+          {
+            "item_type": "UP_S_ITEM_TYPE_WEAPON",
+            "weapon": {
+              "weapon_id": 14158,
+              "weapon_name": "",
+              "rarity": "S",
+              "icon": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/26892155360c9aee08d162f6a5a1f0c7.png",
+              "profession": 3
+            }
+          },
+          {
+            "item_type": "UP_S_ITEM_TYPE_WEAPON",
+            "weapon": {
+              "weapon_id": 14150,
+              "weapon_name": "",
+              "rarity": "S",
+              "icon": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/d93801354ca47e0ee27f89f4d790d19d.png",
+              "profession": 3
+            }
+          }
+        ],
+        "sup_lock_show": false,
+        "more_s_need_cnt": 76
+      },
+      "... (4 total)"
+    ],
+    "record_show_gachas": [
+      "GACHA_TYPE_CHARACTER_UP",
+      "GACHA_TYPE_WEAPON_UP",
+      "... (6 total)"
+    ]
+  }
+}
+```
+
+</details>
+
+<h3 id="zzz-gacha-calendar">获取调频日历</h3>
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> LToken
+
+`https://api-takumi-record.mihoyo.com/event/game_record_zzz/api/zzz/gacha_calendar`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| uid | num | 绝区零 UID | |
+| region | str | 服务器名称 | |
+
+**JSON返回：**
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| avatar_gacha_schedule_list | arr | 代理人卡池日程 | |
+| weapon_gacha_schedule_list | arr | 音擎卡池日程 | |
+
+日程对象字段：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| gacha_type | str | 卡池类型 | |
+| gacha_state | str | 状态 | 如 `GACHA_STATE_IN_PROGRESS` |
+| start_ts | num | 开始时间戳 | |
+| end_ts | num | 结束时间戳 | |
+| sup_lock_show | bool | 锁定展示 | |
+| left_start_ts | num | 距开始剩余秒 | |
+| left_end_ts | num | 距结束剩余秒 | |
+| version | str | 版本号 | 如 `3.1` |
+| avatar_list / weapon_list | arr | UP 列表 | |
+| insurance_id | num | 待调查 | |
+| idx | num | 序号 | 代理人日程可见 |
+
+---
+
+<details>
+<summary>查看示例（节选）</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "avatar_gacha_schedule_list": [
+      {
+        "gacha_type": "GACHA_TYPE_CHARACTER_UP",
+        "gacha_state": "GACHA_STATE_IN_PROGRESS",
+        "start_ts": 1785290400,
+        "end_ts": 1788850799,
+        "sup_lock_show": false,
+        "left_start_ts": 0,
+        "left_end_ts": 2480266,
+        "version": "3.1",
+        "avatar_list": [
+          {
+            "avatar_id": 1581,
+            "avatar_name": "蕾米埃尔",
+            "rarity": "S",
+            "icon": "https://act-webstatic.mihoyo.com/game_record/zzzv2/role_square_avatar/role_square_avatar_1581.png",
+            "avatar_profession": 3,
+            "avatar_element_type": 300,
+            "avatar_sub_element_type": 0,
+            "wiki_url": "https://baike.mihoyo.com/zzz/wiki/content/2076/detail?bbs_presentation_style=fullscreen",
+            "jump_cultivate": true,
+            "is_forward": false,
+            "show_upon": true,
+            "full_name": "蕾米埃尔·丹"
+          },
+          "... (3 total)"
+        ],
+        "insurance_id": 0,
+        "idx": 2
+      },
+      "... (4 total)"
+    ],
+    "weapon_gacha_schedule_list": [
+      {
+        "gacha_type": "GACHA_TYPE_WEAPON_UP",
+        "gacha_state": "GACHA_STATE_IN_PROGRESS",
+        "start_ts": 1785290400,
+        "end_ts": 1788850799,
+        "sup_lock_show": false,
+        "left_start_ts": 0,
+        "left_end_ts": 2480266,
+        "version": "3.1",
+        "weapon_list": [
+          {
+            "weapon_id": 14158,
+            "rarity": "S",
+            "icon": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/26892155360c9aee08d162f6a5a1f0c7.png",
+            "talent_title": "失乐园",
+            "talent_content": "异常精通提升<color=#2BAD00>96</color>点；装备者触发<color=#FFA9DD>[异化]</color>反应时，自身获得属性异常伤害提升<color=#2BAD00>20%</color>的效果，并为全队角色施加造成的伤害提升<color=#2BAD00>30%</color>效果，效果均持续30秒，重复触发时刷新持续时间。",
+            "wiki_url": "https://baike.mihoyo.com/zzz/wiki/content/2109/detail?bbs_presentation_style=fullscreen",
+            "show_upon": true,
+            "profession": 3
+          },
+          "... (3 total)"
+        ],
+        "insurance_id": 0
+      },
+      "... (4 total)"
+    ]
+  }
+}
+```
+
+</details>
+
+<h3 id="zzz-activity-calendar">获取活动日历</h3>
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> LToken
+
+`https://api-takumi-record.mihoyo.com/event/game_record_zzz/api/zzz/activity_calendar`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| uid | num | 绝区零 UID | |
+| region | str | 服务器名称 | |
+
+**JSON返回：**
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| activity_list | arr | 活动列表 | |
+
+`data`对象→`activity_list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| activity_id | num | 活动 ID | |
+| state | str | 状态 | 如 `STATE_IN_PROGRESS` |
+| name | str | 活动名称 | |
+| monochrome_cnt | num | 可获得菲林（单色胶片）总量 | 名称按活动奖励口径理解 |
+| monochrome_got_cnt | num | 已获得数量 | |
+| start_ts | num | 开始时间戳 | |
+| end_ts | num | 结束时间戳 | |
+| left_start_ts | num | 距开始剩余秒 | |
+| left_end_ts | num | 距结束剩余秒 | |
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "activity_list": [
+      {
+        "activity_id": 5000158,
+        "state": "STATE_IN_PROGRESS",
+        "name": "咔嚓！焦点对决！",
+        "monochrome_cnt": 360,
+        "monochrome_got_cnt": 60,
+        "start_ts": 1786068000,
+        "end_ts": 1787515199,
+        "left_start_ts": 0,
+        "left_end_ts": 1144666
+      }
+    ]
+  }
+}
+```
+
+</details>
+
+---
+
+<h3 id="zzz-holo-boss">获取拟境湮灭详情</h3>
+
+接口路径为 `holo_boss_detail`。页面/勋章文案为 **拟境湮灭**（如「拟境湮灭·游刃」「湮灭·闪耀之誓」），与首页 `holo_boss_brief` 对应。
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> LToken
+
+`https://api-takumi-record.mihoyo.com/event/game_record_zzz/api/zzz/holo_boss_detail`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| uid | num | 绝区零 UID | |
+| region | str | 服务器名称 | |
+| schedule_type | num | 期次 | `1` 当期等 |
+
+**JSON返回：**
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| start_time | obj | 开始时间 | 时间对象 |
+| end_time | obj | 结束时间 | 时间对象 |
+| list | arr | 各 BOSS 挑战记录 | |
+| unlock | bool | 是否解锁 | |
+| refresh_time | num | 刷新剩余秒数 | |
+
+`data`对象→`list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| rank | num | 排名 | |
+| star | num | 星级 / 评级星 | |
+| challenge_time | obj | 通关用时 | 时间对象；部分字段可为 0 |
+| boss | obj | BOSS 信息 | |
+| avatar_list | arr | 出战代理人 | |
+
+`data`对象→`list`数组→对象→`boss`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| icon | str | 图标 | |
+| name | str | BOSS 名称 | |
+| medal | obj | 对应勋章 | `medal_icon` / `medal_id` / `is_no_injured`（无伤） |
+
+---
+
+<details>
+<summary>查看示例（节选）</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "start_time": {
+      "year": 2026,
+      "month": 6,
+      "day": 17,
+      "hour": 6,
+      "minute": 0,
+      "second": 0
+    },
+    "end_time": {
+      "year": 2026,
+      "month": 10,
+      "day": 21,
+      "hour": 5,
+      "minute": 59,
+      "second": 59
+    },
+    "list": [
+      {
+        "rank": 6846,
+        "star": 4,
+        "challenge_time": {
+          "year": 0,
+          "month": 0,
+          "day": 0,
+          "hour": 0,
+          "minute": 2,
+          "second": 52
+        },
+        "boss": {
+          "icon": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/1db6475c70ef9bed960bd27f473ef98c.png",
+          "name": "异构·太初梦魇·「始主」",
+          "medal": {
+            "medal_icon": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_ue005d/928f6519574070cb650a9483689622d9.png",
+            "medal_id": 11001,
+            "is_no_injured": false
+          }
+        },
+        "avatar_list": [
+          {
+            "id": 1321,
+            "level": 0,
+            "element_type": 201,
+            "avatar_profession": 1,
+            "rarity": "S",
+            "rank": 0,
+            "role_square_url": "https://act-webstatic.mihoyo.com/game_record/zzzv2/role_square_avatar/role_square_avatar_1321.png",
+            "sub_element_type": 0
+          },
+          "... (3 total)"
+        ]
+      },
+      "... (3 total)"
+    ],
+    "unlock": true,
+    "refresh_time": 6161039
+  }
+}
+```
+
+</details>
+
+<h3 id="zzz-abyss-abstract">获取零号空洞摘要</h3>
+
+对应战绩页「零号空洞」：执照等级、悬赏委托、探索任务、收集条目与最高难度记录等。
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> LToken
+
+`https://api-takumi-record.mihoyo.com/event/game_record_zzz/api/zzz/abysss2_abstract`
+
+> 路径字面量为 `abysss2_abstract`（`abyss` 后为三个 `s`）。
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| uid | num | 绝区零 UID | |
+| region | str | 服务器名称 | |
+
+**JSON返回：**
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| abyss_level | obj | **执照等级** | `cur_level` / `max_level` / `icon`；如 `260/260` |
+| abyss_task | obj | **探索任务** | `cur_task` / `max_task`；如 `130/241` |
+| abyss_duty | obj | **悬赏委托进度** | `cur_duty` / `max_duty`；如 `0/8000` |
+| refresh_time | num | **周期剩余时间**（秒） | 展示为「周期剩余时间：X 天 X 时」 |
+| abyss_max | obj | **已通关最高难度**相关 | 见下表 |
+| abyss_collect | arr | 收集类图鉴进度 | `type` 与页面条目对照见下表 |
+| unlock | bool | 是否解锁 | |
+| abyss_task_force_investigation_max | obj | **特遣调查**最高记录 | 如「特遣调查 以太活性 N」 |
+| special_mission | obj | **峰战**特殊任务最高记录 | 如「难度 N · 以太活性 M」 |
+| hide_abyss_duty | bool | 是否隐藏悬赏委托 | |
+
+`abyss_max` 字段与页面文案：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| max_name | str | **已通关最高难度**名称 | 如「战线肃清·难度六」 |
+| heat_count | num | 相关热度 / 以太活性展示用 | 语义与下列特遣/峰战的 `heat_count` 类似，待统一 |
+| max_count | num | **通关最高难度次数** | |
+| best_time | num | **通关最高难度最短耗时**（秒） | 页格式化为 `HH:MM:SS` |
+| has_data | bool | 是否有数据 | |
+
+`abyss_task_force_investigation_max`（特遣调查）字段：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| max_name | str | 名称 | 固定类文案「特遣调查」 |
+| heat_count | num | **以太活性**数值 | 如「特遣调查 以太活性 10」 |
+| max_count | num | 通关 / 达成次数 | 如 `4` |
+| best_time | num | 最短耗时（秒） | 例 `496` → `00:08:16` |
+| has_data | bool | 是否有有效记录 | |
+
+`special_mission`（峰战）字段：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| has_data | bool | 是否有有效记录 | |
+| heat_count | num | **以太活性**数值 | 如「难度 1 · 以太活性 12」中的 `12` |
+| high_difficulty | num | **难度**编号 | 如「难度 1」中的 `1` |
+| max_count | num | 通关 / 达成次数 | |
+| best_time | num | 最短耗时（秒） | 例 `592` → `00:09:52` |
+
+`abyss_collect` 数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| type | num | 收集条目类型 | 与页面名称对照见下表 |
+| cur_collect | num | 当前进度 | |
+| max_collect | num | 目标进度 | |
+
+> `abyss_collect.type` 与零号空洞「收集」列表对照：
+>
+> | type | 页面名称 | 示例进度 |
+> | ---- | -------- | -------- |
+> | 1 | 收集数据 | `6/12` |
+> | 2 | 探究勋证 | `39/58` |
+> | 3 | 战术棱镜方案 | `100/159` |
+> | 4 | 武备图鉴 | `35/45` |
+> | 5 | 协战武备图鉴 | `95/255` |
+> | 6 | 鸣徽卡牌图鉴 | `2/5` |
+> | 7 | 非正式指南 | `10/10` |
+>
+> 注：名称以客户端展示为准。
+
+<details>
+<summary>查看示例</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "abyss_level": {
+      "cur_level": 260,
+      "max_level": 260,
+      "icon": "https://..."
+    },
+    "abyss_task": { "cur_task": 130, "max_task": 241 },
+    "abyss_duty": { "cur_duty": 0, "max_duty": 8000 },
+    "refresh_time": 537834,
+    "abyss_max": {
+      "max_name": "战线肃清·难度六",
+      "heat_count": 9,
+      "max_count": 2,
+      "best_time": 462,
+      "has_data": true
+    },
+    "abyss_collect": [
+      { "type": 1, "cur_collect": 6, "max_collect": 12 },
+      { "type": 2, "cur_collect": 39, "max_collect": 58 },
+      { "type": 3, "cur_collect": 100, "max_collect": 159 },
+      { "type": 4, "cur_collect": 35, "max_collect": 45 },
+      { "type": 5, "cur_collect": 95, "max_collect": 255 },
+      { "type": 6, "cur_collect": 2, "max_collect": 5 },
+      { "type": 7, "cur_collect": 10, "max_collect": 10 }
+    ],
+    "unlock": true,
+    "abyss_task_force_investigation_max": {
+      "max_name": "特遣调查",
+      "heat_count": 10,
+      "max_count": 4,
+      "best_time": 496,
+      "has_data": false
+    },
+    "special_mission": {
+      "has_data": false,
+      "heat_count": 12,
+      "high_difficulty": 1,
+      "max_count": 1,
+      "best_time": 592
+    },
+    "hide_abyss_duty": false
+  }
+}
+```
+
+</details>
+
+---
+
+<h3 id="zzz-cultivate">养成指南相关接口</h3>
+
+| 路径 | 说明 |
+| ---- | ---- |
+| `GET /event/nap_cultivate_tool/icon_info` | 图标字典 |
+| `GET /event/nap_cultivate_tool/avatar_basic_list` | 代理人基础列表 |
+
+<h4 id="zzz-cultivate-icon">获取图标信息</h4>
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> LToken / CookieToken 等账号 Cookie
+
+`https://act-api-takumi.mihoyo.com/event/nap_cultivate_tool/icon_info`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| uid | num | 绝区零 UID | |
+| region | str | 服务器名称 | 如 `prod_gf_cn` |
+
+**请求头（节选）：**
+
+| 请求头 | 说明 |
+| ---- | ---- |
+| `Origin` | `https://act.mihoyo.com` |
+| `Referer` | `https://act.mihoyo.com/` |
+| `x-rpc-app_version` | 如 `2.112.0` |
+| `x-rpc-cultivate_source` | `bbs` |
+| `x-rpc-device_id` | 设备 ID |
+| `x-rpc-device_fp` | 设备指纹 |
+| `x-rpc-lang` | 如 `zh-cn` |
+| `x-rpc-is_teaser` | 如 `1` |
+
+**JSON返回：**
+
+根对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| retcode | num | 返回码 | |
+| message | str | 返回消息 | |
+| data | obj | 图标数据 | |
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| avatar_icon | obj | 代理人图标字典 | key 为代理人 ID 字符串 |
+| buddy_icon | obj | 邦布图标字典 | key 为邦布 ID 字符串 |
+| special_skill_icon | obj | 特殊技能图标字典 | key 为 ID 字符串 |
+
+`data`对象→`avatar_icon`对象→（按 ID）对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| square_avatar | str | 方形头像 URL | |
+| rectangle_avatar | str | 矩形头像 URL | |
+| vertical_painting | str | 立绘 URL | |
+| vertical_painting_color | str | 立绘主色 | 如 `#b92734` |
+| avatar_us_full_name | str | 英文全名 | |
+| teaser_avatar | str | 预告头像 URL | 可为空字符串 |
+
+<h4 id="zzz-cultivate-avatar-list">获取代理人基础列表</h4>
+
+**国服：**
+
+_请求方式：GET_
+
+> _需要验证Cookie_
+>
+> LToken / CookieToken 等账号 Cookie
+
+`https://act-api-takumi.mihoyo.com/event/nap_cultivate_tool/avatar_basic_list`
+
+**参数：**
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| uid | num | 绝区零 UID | |
+| region | str | 服务器名称 | |
+
+请求头与 `icon_info` 一致（含 `x-rpc-cultivate_source: bbs` 等）。
+
+**JSON返回：**
+
+`data`对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| list | arr | 代理人条目 | |
+
+`data`对象→`list`数组→对象：
+
+| 字段 | 类型 | 内容 | 备注 |
+| ---- | ---- | ---- | ---- |
+| avatar | obj | 代理人基础信息 | 字段类似战绩 `avatar_list` 单项 |
+| unlocked | bool | 是否已解锁 | |
+| is_up | bool | 是否 UP | |
+| is_teaser | bool | 是否预告 | |
+| is_top | bool | 是否置顶 | |
+
+---
+
+**备注：**
+
+| 能力 | 国服主机 / 路径前缀 | 国际服主机 / 路径前缀 |
+| ---- | ---- | ---- |
+| 战绩 | `api-takumi-record.mihoyo.com/event/game_record_zzz/api/zzz/` | `sg-public-api.hoyolab.com/event/game_record_zzz/api/zzz/` |
+| 绳网月报 | `api-takumi.mihoyo.com/event/nap_ledger/` | `sg-public-api.hoyolab.com/event/nap_ledger/` |
+| 养成工具 | `act-api-takumi.mihoyo.com/event/nap_cultivate_tool/` | 未知 |
+| 绑定角色 | `api-takumi.mihoyo.com/binding/api/getUserGameRolesByCookie` | `api-account-os.hoyolab.com/binding/api/getUserGameRolesByCookieToken` |
+
+**`icon_info` 示例：**
+
+<details>
+<summary>查看示例（icon_info 节选）</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "avatar_icon": {
+      "1411": {
+        "square_avatar": "https://act-webstatic.mihoyo.com/game_record/zzzv2/role_square_avatar/role_square_avatar_1411.png",
+        "rectangle_avatar": "https://act-webstatic.mihoyo.com/game_record/zzzv2/role_square_avatar/role_square_avatar_1411.png",
+        "vertical_painting": "https://act-webstatic.mihoyo.com/game_record/zzzv2/role_vertical_painting/role_vertical_painting_1411.png",
+        "vertical_painting_color": "#b92734",
+        "avatar_us_full_name": "Ukinami Yuzuha",
+        "teaser_avatar": ""
+      },
+      "1541": {
+        "square_avatar": "https://act-webstatic.mihoyo.com/game_record/zzzv2/role_square_avatar/role_square_avatar_1541.png",
+        "rectangle_avatar": "https://act-webstatic.mihoyo.com/game_record/zzzv2/role_square_avatar/role_square_avatar_1541.png",
+        "vertical_painting": "https://act-webstatic.mihoyo.com/game_record/zzzv2/role_vertical_painting/role_vertical_painting_1541.png",
+        "vertical_painting_color": "#6848f7",
+        "avatar_us_full_name": "Promeia",
+        "teaser_avatar": ""
+      }
+    },
+    "buddy_icon": {
+      "54004": {
+        "square_avatar": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_u0f27d/1601781a2808352201728e4b965abc4b.png",
+        "rectangle_avatar": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_u0f27d/1601781a2808352201728e4b965abc4b.png"
+      }
+    },
+    "special_skill_icon": {
+      "1051": {
+        "special_skills": [
+          {
+            "skill_type": 1,
+            "icon": "https://fastcdn.mihoyo.com/static-resource-v2/2025/12/16/4c0f24030dcbf14ba91505c60ced058a_8226905411985297866.png"
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+</details>
+
+**`avatar_basic_list` 示例：**
+
+<details>
+<summary>查看示例（avatar_basic_list 节选）</summary>
+
+```json
+{
+  "retcode": 0,
+  "message": "OK",
+  "data": {
+    "list": [
+      {
+        "avatar": {
+          "id": 1591,
+          "level": 0,
+          "name_mi18n": "希格莉德",
+          "full_name_mi18n": "希格莉德·德拉叙尔",
+          "element_type": 202,
+          "camp_name_mi18n": "罗斯凯利法·空域巡戍局",
+          "avatar_profession": 1,
+          "rarity": "S",
+          "group_icon_path": "https://act-webstatic.mihoyo.com/darkmatter/nap/live_webtool01_cn/item_icon_u0a0ae/59195faf1420775212a80ac27221e2df.png",
+          "hollow_icon_path": "https://act-webstatic.mihoyo.com/darkmatter/nap/live_webtool01_cn/item_icon_u0a0ae/377f5ad3f1eb2d7dd4968c0d1b634be7.png",
+          "rank": 0,
+          "sub_element_type": 0,
+          "awaken_state": "AwakenStateNotVisible"
+        },
+        "unlocked": false,
+        "is_up": false,
+        "is_teaser": true,
+        "is_top": false
+      },
+      {
+        "avatar": {
+          "id": 1501,
+          "level": 60,
+          "name_mi18n": "爱芮",
+          "full_name_mi18n": "爱芮",
+          "element_type": 205,
+          "camp_name_mi18n": "妄想天使",
+          "avatar_profession": 3,
+          "rarity": "S",
+          "group_icon_path": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_u0f27d/fbe48ad2d135c7ba46e9a100f1e51e6d.png",
+          "hollow_icon_path": "https://act-webstatic.mihoyo.com/darkmatter/nap/prod_gf_cn/item_icon_u0f27d/ca9120a6d3fe1b4284b54ad291fa0755.png",
+          "rank": 0,
+          "sub_element_type": 0,
+          "awaken_state": "AwakenStateNotVisible"
+        },
+        "unlocked": true,
+        "is_up": true,
+        "is_teaser": false,
+        "is_top": false
+      },
+      "... (58 total)"
+    ]
+  }
 }
 ```
 
